@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Kyle Davis for IOP Communications Director. Rebuilding the IOP, brick by brick: the plan, the video, and how to reach me.">
+<meta property="og:title" content="Kyle Davis for Comms">
+<meta property="og:description" content="Kyle Davis for IOP Communications Director. Rebuilding the IOP, brick by brick: the plan, the video, and how to reach me.">
+<meta property="og:image" content="poster-wide.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='4' y='6' width='24' height='6' fill='%23d40019'/%3E%3Crect x='4' y='14' width='24' height='6' fill='%23d40019'/%3E%3Crect x='4' y='22' width='24' height='6' fill='%23d40019'/%3E%3C/svg%3E">
+<title>Kyle Davis for Comms</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* Layout: the voter guide, built for the web. A Swiss grid on white: black rules, one red, hard edges, no cards. */
+:root {
+  --paper: #ffffff;
+  --ink: #111111;
+  --ink-2: #4a4a48;
+  --rule: #d9d7d4;
+  --red: #d40019;
+  --red-ink: #ffffff;
+  --display: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --body: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --wrap: 1180px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); margin: 0; letter-spacing: -0.02em; text-wrap: balance; }
+p { margin: 0; }
+
+/* top bar */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--paper); border-bottom: 1px solid var(--rule); }
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.bar .name { font-weight: 800; font-size: 17px; letter-spacing: -0.01em; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+.bar .name i { display: inline-block; width: 22px; height: 12px; background: var(--red); }
+.bar nav { display: flex; gap: 22px; align-items: center; }
+.bar nav a { text-decoration: none; font-weight: 600; font-size: 15px; }
+.bar nav a:hover { color: var(--red); }
+.bar .vote { background: var(--red); color: var(--red-ink); padding: 8px 14px; font-weight: 700; }
+.bar .vote:hover { color: var(--red-ink) !important; background: var(--ink); }
+@media (max-width: 760px) { .bar nav a:not(.vote) { display: none; } }
+
+/* hero: logo, the number, the face */
+.hero .wrap { padding-block: 40px 28px; display: grid; grid-template-columns: 1.05fr 1fr 0.8fr; gap: 22px; align-items: stretch; }
+.hero .logo { display: flex; flex-direction: column; justify-content: space-between; gap: 22px; min-width: 0; }
+.hero .logo img { width: 100%; max-width: 440px; height: auto; display: block; }
+.hero .quote { font-size: 19px; font-weight: 600; max-width: 30ch; border-top: 4px solid var(--ink); padding-top: 12px; }
+.stat { background: var(--red); color: var(--red-ink); padding: 26px 26px 22px; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; min-width: 0; }
+.stat .num { font-family: var(--display); font-weight: 800; font-size: clamp(88px, 11vw, 150px); line-height: 0.85; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
+.stat .num small { font-size: 0.55em; letter-spacing: -0.02em; }
+.stat p { font-size: clamp(20px, 2vw, 26px); font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; }
+.stat .src { font-size: 12.5px; font-weight: 500; opacity: 0.85; line-height: 1.35; }
+.photo { background: #ecebe8; min-width: 0; display: flex; align-items: flex-end; overflow: hidden; position: relative; padding-top: 18px; }
+.photo img { width: 100%; height: auto; display: block; max-width: 100%; position: relative; }
+.photo .tag { display: none; }
+@media (max-width: 900px) {
+  .hero .wrap { grid-template-columns: 1fr 1fr; }
+  .hero .logo { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .photo img { width: 62%; }
+  .photo .tag { display: block; position: absolute; right: 16px; bottom: 18px; width: 34%; font-weight: 800; font-size: 20px; line-height: 1.1; letter-spacing: -0.01em; }
+  .photo .tag span { display: block; color: var(--red); font-size: 14px; font-weight: 700; margin-top: 6px; }
+}
+
+/* section heads */
+.sec { padding-block: 56px; }
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-top: 10px solid var(--ink); padding-top: 14px; margin-bottom: 28px; flex-wrap: wrap; }
+.sec-head h2 { font-size: clamp(32px, 4.4vw, 52px); font-weight: 800; line-height: 1; }
+.sec-head .aside { font-size: 15px; color: var(--ink-2); max-width: 46ch; }
+
+/* plan: three columns, straight from the guide */
+.plan { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.pillar { min-width: 0; }
+.pillar .top { border-top: 4px solid var(--ink); padding-top: 12px; display: flex; align-items: center; gap: 12px; }
+.pillar .n { width: 34px; height: 34px; background: var(--red); color: var(--red-ink); font-weight: 800; display: grid; place-items: center; font-size: 19px; flex: none; }
+.pillar h3 { font-size: 30px; font-weight: 800; }
+.pillar .why { font-weight: 700; margin-top: 12px; font-size: 17px; line-height: 1.4; }
+.pillar ul { list-style: none; margin: 18px 0 0; padding: 0; }
+.pillar li { border-top: 1px solid var(--ink); padding-block: 12px 14px; }
+.pillar li b { display: block; font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.pillar li span { color: var(--ink-2); font-size: 15.5px; }
+@media (max-width: 860px) { .plan { grid-template-columns: 1fr; gap: 40px; } }
+
+/* video */
+.watch { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+@media (max-width: 900px) { .watch { grid-template-columns: 1fr; } .screen { max-width: 680px; } }
+.screen { background: var(--ink); max-width: 100%; }
+.screen video { width: 100%; height: auto; aspect-ratio: 16 / 9; display: block; background: #000; max-width: 100%; }
+.watch .copy { min-width: 0; display: grid; gap: 22px; align-items: start; }
+.watch .copy .left { display: grid; gap: 12px; min-width: 0; }
+.watch blockquote { font-size: clamp(24px, 2.4vw, 32px) !important; }
+.watch blockquote { margin: 0; font-family: var(--display); font-size: clamp(26px, 3.2vw, 40px); font-weight: 800; line-height: 1.08; letter-spacing: -0.02em; max-width: 20ch; }
+.watch blockquote::before { content: ""; display: block; width: 46px; height: 14px; background: var(--red); margin-bottom: 18px; }
+.watch .who { font-weight: 600; color: var(--ink-2); }
+.watch .credit { font-size: 13px; color: var(--ink-2); }
+.chapters { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; max-width: 520px; }
+.chapters li { border-top: 1px solid var(--rule); }
+.chapters button { all: unset; cursor: pointer; display: flex; gap: 14px; width: 100%; padding-block: 10px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.chapters button span { color: var(--red); width: 44px; flex: none; }
+.chapters button:hover { color: var(--red); }
+.chapters button:focus-visible { outline: 3px solid var(--red); }
+
+/* about */
+.about { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.about h3 { font-size: 22px; font-weight: 800; border-top: 4px solid var(--ink); padding-top: 10px; margin-bottom: 12px; }
+.about p { max-width: 58ch; }
+.about ul { margin: 0; padding: 0; list-style: none; }
+.about li { padding-block: 9px; border-bottom: 1px solid var(--rule); }
+.about li:first-child { padding-top: 0; }
+@media (max-width: 760px) { .about { grid-template-columns: 1fr; } }
+
+/* talk */
+.talk { background: var(--ink); color: var(--paper); }
+.talk .wrap { padding-block: 56px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 36px; align-items: end; }
+.talk h2 { font-size: clamp(36px, 5vw, 64px); font-weight: 800; line-height: 0.98; }
+.talk h2 em { font-style: normal; color: var(--red); }
+.talk p { margin-top: 16px; color: #cfcdca; max-width: 46ch; }
+.btn { display: inline-flex; align-items: center; gap: 10px; background: var(--red); color: var(--red-ink); text-decoration: none; font-weight: 700; padding: 15px 20px; font-size: 18px; }
+.btn:hover { background: var(--paper); color: var(--ink); }
+.contact { display: grid; gap: 12px; }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid #3a3a39; padding-top: 12px; flex-wrap: wrap; }
+.row .k { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: #a9a7a3; }
+.row .v { font-weight: 700; font-size: 18px; user-select: all; overflow-wrap: anywhere; }
+.copy-btn { all: unset; cursor: pointer; font-size: 13px; font-weight: 700; border: 1px solid #5a5a58; padding: 5px 10px; }
+.copy-btn:hover, .copy-btn:focus-visible { border-color: var(--paper); }
+@media (max-width: 760px) { .talk .wrap { grid-template-columns: 1fr; align-items: start; } }
+
+/* footer */
+.foot .wrap { padding-block: 34px 44px; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
+.foot .big { color: var(--red); font-family: var(--display); font-weight: 800; font-size: clamp(40px, 7vw, 84px); line-height: 0.9; letter-spacing: -0.03em; }
+.foot p { color: var(--ink-2); font-size: 14px; max-width: 48ch; }
+</style>
+<style>body { margin: 0; } img { max-width: 100%; }</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="name" href="#top"><i aria-hidden="true"></i>Kyle Davis for Comms</a>
+    <nav aria-label="Sections">
+      <a href="#plan">The plan</a>
+      <a href="#watch">Video</a>
+      <a href="#about">About</a>
+      <a href="#talk">Talk to me</a>
+      <a class="vote" href="#vote">Vote Nov. 14–15</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-label="Introduction">
+    <div class="wrap">
+      <div class="logo">
+        <img src="logo.png" width="640" height="630" alt="Brick by Brick. Kyle Davis for Comms.">
+        <p class="quote">The IOP can be better. But only if we rebuild it, brick by brick.</p>
+      </div>
+      <div class="stat">
+        <div class="num">38<small>%</small></div>
+        <p>approval for the IOP in HPR's campus poll. Dead last. I'm running to change that.</p>
+        <span class="src">Harvard Political Review, Fall 2025 Campus Poll, 114 respondents.</span>
+      </div>
+      <div class="photo"><img src="kyle-cutout.png" width="630" height="924" alt="Kyle Davis"><p class="tag">Kyle Davis<span>for IOP Communications Director</span></p></div>
+    </div>
+  </section>
+
+  <section class="sec" id="plan" aria-labelledby="plan-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="plan-h">The plan</h2>
+        <p class="aside">Running for IOP Communications Director. Three commitments, fifteen specific things I'll do.</p>
+      </div>
+      <div class="plan">
+        <article class="pillar">
+          <div class="top"><span class="n">1</span><h3>Coverage</h3></div>
+          <p class="why">The IOP has 17 programs, but five were never mentioned in our weekly newsletters. A stronger reputation starts with showcasing all our work and talent.</p>
+          <ul>
+            <li><b>The Coverage Log</b><span>Keep a public log of programs featured in every email and post. If I skip someone, you'll see it.</span></li>
+            <li><b>Rotation</b><span>Feature two programs in each email so every part of the IOP gets its turn in the spotlight.</span></li>
+            <li><b>Pubbing Everywhere</b><span>Share IOP events across Houses and affinity groups, including Director's Internships and the One Fund.</span></li>
+            <li><b>Match Rejection with Suggestion</b><span>Suggest three other programs students can join that week, including the coalitions.</span></li>
+            <li><b>Snapshots</b><span>Continuing to ensure all IOP events always have a communications representative to document the moment.</span></li>
+          </ul>
+        </article>
+        <article class="pillar">
+          <div class="top"><span class="n">2</span><h3>Creativity</h3></div>
+          <p class="why">Our communications need to be fun and engaging. I want to reinvigorate our videos and newsletters with fresh faces and new formats, and draw new people to the IOP.</p>
+          <ul>
+            <li><b>Faces in Every Email</b><span>Real members at real events in every newsletter to showcase our community.</span></li>
+            <li><b>New Video Formats</b><span>Beyond the weekly recap: 60-second explainers, a day inside a program, skits, and interviews with IOP members.</span></li>
+            <li><b>Program Leads on Camera</b><span>Program leads in communications videos across the IOP to highlight unique experiences.</span></li>
+            <li><b>Supporting Student Journalism</b><span>Lead every Monday newsletter with HPR's pick of the previous week.</span></li>
+            <li><b>The IOP Yearbook</b><span>Capture all the memories through a digital yearbook and highlight memories from the IOP past, present, and future!</span></li>
+            <li><b>Podcasts</b><span>Want to hear from speakers, students, and mentors? Tune into podcasts with members and guests of the IOP to listen to discussions on what YOU want to know!</span></li>
+          </ul>
+        </article>
+        <article class="pillar">
+          <div class="top"><span class="n">3</span><h3>Accountability</h3></div>
+          <p class="why">The only way to know we're moving in the right direction is to measure how people react to us. That's why we need accountability for promises made.</p>
+          <ul>
+            <li><b>Public SAC Minutes</b><span>Published within a week of every meeting. This is a student organization, not the National Security Council.</span></li>
+            <li><b>The State of the IOP</b><span>A twice-a-semester email with poll findings and program metrics.</span></li>
+            <li><b>HPR Polls Every Semester</b><span>Run the same public opinion poll every semester and publish the results, whatever they say.</span></li>
+            <li><b>IOP Operating Manual</b><span>Explain who to contact and how to submit your own proposal to SAC.</span></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="watch" aria-labelledby="watch-h">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="watch-h">Watch</h2><p class="aside">Two minutes on why I'm running and what I'll do.</p></div>
+      <div class="watch">
+        <div class="screen">
+          <video id="reel" controls playsinline preload="metadata" poster="poster-wide.jpg">
+            <source src="video.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="copy">
+          <div class="left">
+            <blockquote>Ask not what your country can do for you; ask what you can do for your country.</blockquote>
+            <p class="who">John F. Kennedy, Inaugural Address, January 20, 1961</p>
+            <p class="credit">Archival footage: John F. Kennedy Presidential Library and Museum.</p>
+          </div>
+          <ol class="chapters" aria-label="Jump to a part of the video">
+            <li><button type="button" data-t="0"><span>0:00</span>Why the IOP exists</button></li>
+            <li><button type="button" data-t="17"><span>0:17</span>Where we are: 38%</button></li>
+            <li><button type="button" data-t="43.5"><span>0:43</span>Who I am</button></li>
+            <li><button type="button" data-t="49"><span>0:49</span>1. Coverage</button></li>
+            <li><button type="button" data-t="74.6"><span>1:14</span>2. Creativity</button></li>
+            <li><button type="button" data-t="98.4"><span>1:38</span>3. Accountability</button></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="about" aria-labelledby="about-h">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="about-h">About</h2></div>
+      <div class="about">
+        <div>
+          <h3>You may know me as...</h3>
+          <p>Junior in Currier House studying Social Studies and Economics. From the lovely college town of Bloomington, Indiana. Pianist, tennis player, occasionally Catan winner. Frequenter of Faro. Debate enthusiast.</p>
+        </div>
+        <div>
+          <h3>Qualifications</h3>
+          <ul>
+            <li>Member, JFK Jr. Forum, FSG, and CIVICS</li>
+            <li>Director of Tournaments, Harvard Undergraduate Mock Trial</li>
+            <li>Co-President, Harvard Undergraduate Abundance</li>
+            <li>Communications and Strategy, General Legal and Act One</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="talk" id="talk" aria-labelledby="talk-h">
+    <div class="wrap">
+      <div>
+        <h2 id="talk-h">Here to listen <em>to you.</em></h2>
+        <p>Tell me what the IOP gets wrong, what your program wishes people knew, or what you'd want in your inbox. Fifteen minutes, your pick of time.</p>
+      </div>
+      <div class="contact">
+        <a class="btn" href="https://bit.ly/3WfvOH4" target="_blank" rel="noopener">Schedule a chat <span aria-hidden="true">→</span></a>
+        <div class="row"><span class="k">Email</span><span class="v" id="email">kdavis@college.harvard.edu</span><button class="copy-btn" type="button" data-copy="email">Copy</button></div>
+        <div class="row"><span class="k">Phone</span><span class="v" id="phone">812-345-1389</span><button class="copy-btn" type="button" data-copy="phone">Copy</button></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="vote">
+  <div class="wrap">
+    <div class="big">Vote Nov. 14–15</div>
+    <p>IOP executive board elections. Watch your inbox for the ballot from the Election Commission.</p>
+  </div>
+</footer>
+
+<script>
+  const v = document.getElementById("reel");
+  document.querySelectorAll(".chapters button").forEach(b => b.addEventListener("click", () => {
+    try { v.currentTime = parseFloat(b.dataset.t); v.play().catch(() => {}); } catch (e) {}
+    v.scrollIntoView({ block: "center", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  }));
+  document.querySelectorAll(".copy-btn").forEach(b => b.addEventListener("click", () => {
+    const el = document.getElementById(b.dataset.copy); const text = el.textContent.trim();
+    const done = () => { b.textContent = "Copied"; setTimeout(() => b.textContent = "Copy", 1500); };
+    const fallback = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Selected"; setTimeout(() => b.textContent = "Copy", 1500); };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+  }));
+</script>
+
+</body>
+</html>
