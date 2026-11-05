@@ -3,157 +3,272 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Kyle Davis for IOP Communications Director. Rebuilding the IOP, brick by brick: the plan, the video, and how to reach me.">
+<meta name="description" content="Kyle Davis for IOP Communications Director. Rebuilding the IOP, brick by brick: the plan, the videos, office hours, and the campaign's own numbers.">
 <meta property="og:title" content="Kyle Davis for Comms">
-<meta property="og:description" content="Kyle Davis for IOP Communications Director. Rebuilding the IOP, brick by brick: the plan, the video, and how to reach me.">
+<meta property="og:description" content="Kyle Davis for IOP Communications Director. Rebuilding the IOP, brick by brick.">
 <meta property="og:image" content="poster-wide.jpg">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='4' y='6' width='24' height='6' fill='%23d40019'/%3E%3Crect x='4' y='14' width='24' height='6' fill='%23d40019'/%3E%3Crect x='4' y='22' width='24' height='6' fill='%23d40019'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='7' y='5' width='18' height='6' fill='%23d40019'/%3E%3Crect x='3' y='13' width='26' height='6' fill='%23d40019'/%3E%3Crect x='7' y='21' width='18' height='6' fill='%23d40019'/%3E%3C/svg%3E">
 <title>Kyle Davis for Comms</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-/* Layout: the voter guide, built for the web. A Swiss grid on white: black rules, one red, hard edges, no cards. */
+/* Campaign poster: red, black and white, condensed headlines, big numbers, hard edges. */
 :root {
   --paper: #ffffff;
   --ink: #111111;
   --ink-2: #4a4a48;
-  --rule: #d9d7d4;
+  --rule: #dcdad6;
+  --stone: #f1efea;
   --red: #d40019;
-  --red-ink: #ffffff;
-  --display: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --red-2: #a30013;
+  --red-on-ink: #ff2a3d;
+  --yellow: #ffe14d;
+  --blue: #0136fe;
+  --display: "Anton", Impact, "Arial Narrow Bold", sans-serif;
   --body: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --wrap: 1180px;
+  --wrap: 1200px;
   color-scheme: light;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
-body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+img, video { max-width: 100%; }
 a { color: inherit; }
 :focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
-.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-h1, h2, h3 { font-family: var(--display); margin: 0; letter-spacing: -0.02em; text-wrap: balance; }
 p { margin: 0; }
+h1, h2, h3 { margin: 0; font-weight: 400; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.d { font-family: var(--display); text-transform: uppercase; letter-spacing: 0.005em; line-height: 0.9; }
 
-/* top bar */
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
-.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--paper); border-bottom: 1px solid var(--rule); }
-.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
-.bar .name { font-weight: 800; font-size: 17px; letter-spacing: -0.01em; text-decoration: none; display: flex; align-items: center; gap: 10px; }
-.bar .name i { display: inline-block; width: 22px; height: 12px; background: var(--red); }
-.bar nav { display: flex; gap: 22px; align-items: center; }
-.bar nav a { text-decoration: none; font-weight: 600; font-size: 15px; }
+/* ticker */
+.ticker { background: var(--ink); color: var(--paper); font-size: 12.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.ticker .wrap { display: flex; justify-content: space-between; gap: 16px; padding-block: 8px; flex-wrap: wrap; }
+.ticker b { color: var(--red-on-ink); font-variant-numeric: tabular-nums; }
+@media (max-width: 640px) { .ticker .hide-s { display: none; } }
+
+/* nav */
+.bar { position: sticky; top: 0; z-index: 20; background: var(--paper); border-bottom: 3px solid var(--ink); }
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; }
+.mark { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.bricks { display: inline-grid; gap: 3px; flex: none; }
+.bricks i { display: block; height: 6px; background: var(--red); }
+.bricks i:nth-child(1), .bricks i:nth-child(3) { width: 18px; margin-left: 6px; }
+.bricks i:nth-child(2) { width: 30px; }
+.mark span { font-family: var(--display); font-size: 24px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1; }
+.bar nav { display: flex; align-items: center; gap: 20px; }
+.bar nav a { text-decoration: none; font-weight: 700; font-size: 14.5px; }
 .bar nav a:hover { color: var(--red); }
-.bar .vote { background: var(--red); color: var(--red-ink); padding: 8px 14px; font-weight: 700; }
-.bar .vote:hover { color: var(--red-ink) !important; background: var(--ink); }
-@media (max-width: 760px) { .bar nav a:not(.vote) { display: none; } }
+.bar nav .vote { background: var(--red); color: #fff; padding: 9px 14px; font-family: var(--display); font-weight: 400; font-size: 18px; letter-spacing: 0.03em; text-transform: uppercase; }
+.bar nav .vote:hover { background: var(--ink); color: #fff; }
+@media (max-width: 900px) { .bar nav a:not(.vote) { display: none; } }
 
-/* hero: logo, the number, the face */
-.hero .wrap { padding-block: 40px 28px; display: grid; grid-template-columns: 1.05fr 1fr 0.8fr; gap: 22px; align-items: stretch; }
-.hero .logo { display: flex; flex-direction: column; justify-content: space-between; gap: 22px; min-width: 0; }
-.hero .logo img { width: 100%; max-width: 440px; height: auto; display: block; }
-.hero .quote { font-size: 19px; font-weight: 600; max-width: 30ch; border-top: 4px solid var(--ink); padding-top: 12px; }
-.stat { background: var(--red); color: var(--red-ink); padding: 26px 26px 22px; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; min-width: 0; }
-.stat .num { font-family: var(--display); font-weight: 800; font-size: clamp(88px, 11vw, 150px); line-height: 0.85; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
-.stat .num small { font-size: 0.55em; letter-spacing: -0.02em; }
-.stat p { font-size: clamp(20px, 2vw, 26px); font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; }
-.stat .src { font-size: 12.5px; font-weight: 500; opacity: 0.85; line-height: 1.35; }
-.photo { background: #ecebe8; min-width: 0; display: flex; align-items: flex-end; overflow: hidden; position: relative; padding-top: 18px; }
-.photo img { width: 100%; height: auto; display: block; max-width: 100%; position: relative; }
-.photo .tag { display: none; }
+/* hero */
+.hero .wrap { padding-block: 34px 40px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px; align-items: stretch; }
+.hero .kick { font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); }
+.hero h1 { font-size: clamp(92px, 13vw, 190px); line-height: 0.84; margin-top: 14px; }
+.hero h1 .r { color: var(--red); }
+.hero .who { font-weight: 900; font-size: clamp(24px, 2.6vw, 34px); letter-spacing: -0.02em; line-height: 1.05; margin-top: 22px; }
+.hero .lede { font-size: 19px; font-weight: 500; max-width: 34ch; margin-top: 12px; color: var(--ink-2); }
+.ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); text-transform: uppercase; font-size: 21px; letter-spacing: 0.03em; padding: 13px 18px; border: 3px solid var(--ink); background: var(--paper); color: var(--ink); line-height: 1; }
+.btn:hover { background: var(--ink); color: #fff; }
+.btn.red { background: var(--red); border-color: var(--red); color: #fff; }
+.btn.red:hover { background: var(--ink); border-color: var(--ink); }
+.poster { position: relative; background: var(--red); min-height: 560px; display: flex; align-items: flex-end; justify-content: flex-end; overflow: hidden; }
+.poster .bg { position: absolute; inset: 0; font-family: var(--display); color: rgba(255,255,255,0.09); font-size: 150px; line-height: 0.82; text-transform: uppercase; padding: 14px 18px; overflow: hidden; pointer-events: none; user-select: none; }
+.poster img { position: relative; width: 74%; height: auto; display: block; filter: grayscale(1) contrast(1.05); }
+.sticker { position: absolute; left: 0; bottom: 34px; background: var(--ink); color: #fff; padding: 18px 22px 18px 20px; max-width: 64%; }
+.sticker .num { font-family: var(--display); font-size: clamp(86px, 9vw, 124px); line-height: 0.85; }
+.sticker .num small { font-size: 0.5em; vertical-align: top; }
+.sticker p { font-weight: 800; font-size: 17px; line-height: 1.2; margin-top: 8px; }
+.src { font-size: 12.5px; color: var(--ink-2); margin-top: 8px; }
 @media (max-width: 900px) {
-  .hero .wrap { grid-template-columns: 1fr 1fr; }
-  .hero .logo { grid-column: 1 / -1; }
-}
-@media (max-width: 560px) {
   .hero .wrap { grid-template-columns: 1fr; }
-  .photo img { width: 62%; }
-  .photo .tag { display: block; position: absolute; right: 16px; bottom: 18px; width: 34%; font-weight: 800; font-size: 20px; line-height: 1.1; letter-spacing: -0.01em; }
-  .photo .tag span { display: block; color: var(--red); font-size: 14px; font-weight: 700; margin-top: 6px; }
+  .poster { min-height: 0; aspect-ratio: 4 / 4.2; }
 }
+@media (max-width: 520px) { .sticker { max-width: 78%; bottom: 18px; } .sticker p { font-size: 15px; } }
 
-/* section heads */
-.sec { padding-block: 56px; }
-.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-top: 10px solid var(--ink); padding-top: 14px; margin-bottom: 28px; flex-wrap: wrap; }
-.sec-head h2 { font-size: clamp(32px, 4.4vw, 52px); font-weight: 800; line-height: 1; }
-.sec-head .aside { font-size: 15px; color: var(--ink-2); max-width: 46ch; }
+/* marquee */
+.marquee { background: var(--red); color: #fff; overflow: hidden; border-block: 3px solid var(--ink); }
+.marquee .track { display: flex; width: max-content; animation: slide 38s linear infinite; }
+.marquee span { font-family: var(--display); font-size: 34px; text-transform: uppercase; letter-spacing: 0.02em; padding: 12px 0; white-space: nowrap; }
+.marquee span::after { content: "■"; font-size: 0.6em; margin: 0 22px; position: relative; top: -0.15em; }
+@keyframes slide { to { transform: translateX(-50%); } }
 
-/* plan: three columns, straight from the guide */
-.plan { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
-.pillar { min-width: 0; }
-.pillar .top { border-top: 4px solid var(--ink); padding-top: 12px; display: flex; align-items: center; gap: 12px; }
-.pillar .n { width: 34px; height: 34px; background: var(--red); color: var(--red-ink); font-weight: 800; display: grid; place-items: center; font-size: 19px; flex: none; }
-.pillar h3 { font-size: 30px; font-weight: 800; }
-.pillar .why { font-weight: 700; margin-top: 12px; font-size: 17px; line-height: 1.4; }
-.pillar ul { list-style: none; margin: 18px 0 0; padding: 0; }
-.pillar li { border-top: 1px solid var(--ink); padding-block: 12px 14px; }
-.pillar li b { display: block; font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+/* sections */
+.sec { padding-block: 64px; }
+.head { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 20px; align-items: end; border-top: 10px solid var(--ink); padding-top: 16px; margin-bottom: 30px; }
+.head .n { font-family: var(--display); color: var(--red); font-size: clamp(54px, 7vw, 92px); line-height: 0.85; }
+.head h2 { font-size: clamp(54px, 7vw, 92px); }
+.head .aside { grid-column: 1 / -1; font-size: 17px; font-weight: 600; color: var(--ink-2); max-width: 60ch; margin-top: 8px; }
+.ink { background: var(--ink); color: #fff; }
+.ink .head { border-color: #fff; }
+.ink .head .n { color: var(--red-on-ink); }
+.ink .head .aside { color: #c9c7c3; }
+
+/* plan */
+.plan { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; }
+.pillar { min-width: 0; border: 3px solid var(--ink); display: flex; flex-direction: column; }
+.pillar .top { background: var(--red); color: #fff; padding: 14px 18px 12px; display: flex; align-items: baseline; gap: 14px; }
+.pillar .top .k { font-family: var(--display); font-size: 58px; line-height: 0.85; }
+.pillar .top h3 { font-family: var(--display); font-size: 38px; text-transform: uppercase; line-height: 0.95; }
+.pillar .why { font-weight: 800; font-size: 17.5px; line-height: 1.38; padding: 16px 18px 4px; }
+.pillar ul { list-style: none; margin: 0; padding: 8px 18px 16px; }
+.pillar li { border-top: 2px solid var(--ink); padding-block: 11px 12px; }
+.pillar li:first-child { border-top-width: 3px; }
+.pillar li b { display: block; font-size: 17px; font-weight: 800; }
 .pillar li span { color: var(--ink-2); font-size: 15.5px; }
-@media (max-width: 860px) { .plan { grid-template-columns: 1fr; gap: 40px; } }
+@media (max-width: 900px) { .plan { grid-template-columns: 1fr; } }
 
-/* video */
-.watch { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 40px; align-items: start; }
-@media (max-width: 900px) { .watch { grid-template-columns: 1fr; } .screen { max-width: 680px; } }
-.screen { background: var(--ink); max-width: 100%; }
-.screen video { width: 100%; height: auto; aspect-ratio: 16 / 9; display: block; background: #000; max-width: 100%; }
-.watch .copy { min-width: 0; display: grid; gap: 22px; align-items: start; }
-.watch .copy .left { display: grid; gap: 12px; min-width: 0; }
-.watch blockquote { font-size: clamp(24px, 2.4vw, 32px) !important; }
-.watch blockquote { margin: 0; font-family: var(--display); font-size: clamp(26px, 3.2vw, 40px); font-weight: 800; line-height: 1.08; letter-spacing: -0.02em; max-width: 20ch; }
-.watch blockquote::before { content: ""; display: block; width: 46px; height: 14px; background: var(--red); margin-bottom: 18px; }
-.watch .who { font-weight: 600; color: var(--ink-2); }
-.watch .credit { font-size: 13px; color: var(--ink-2); }
-.chapters { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; max-width: 520px; }
-.chapters li { border-top: 1px solid var(--rule); }
-.chapters button { all: unset; cursor: pointer; display: flex; gap: 14px; width: 100%; padding-block: 10px; font-weight: 600; font-variant-numeric: tabular-nums; }
-.chapters button span { color: var(--red); width: 44px; flex: none; }
-.chapters button:hover { color: var(--red); }
-.chapters button:focus-visible { outline: 3px solid var(--red); }
+/* videos */
+.hub { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.stage { min-width: 0; }
+.screen { position: relative; background: #000; aspect-ratio: 16 / 9; border: 3px solid #fff; }
+.screen video { width: 100%; height: 100%; display: block; background: #000; }
+.now { margin-top: 16px; display: grid; gap: 8px; }
+.now .meta { font-weight: 800; font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red-on-ink); }
+.now h3 { font-family: var(--display); font-size: clamp(34px, 4vw, 52px); text-transform: uppercase; line-height: 0.95; }
+.now p { color: #d6d4d0; max-width: 62ch; }
+.now .credit { font-size: 13px; color: #9d9b97; }
+.chapters { list-style: none; padding: 0; margin: 6px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 0 18px; max-width: 640px; }
+.chapters li { border-top: 1px solid #3a3a39; }
+.chapters button { all: unset; cursor: pointer; display: flex; gap: 12px; width: 100%; padding-block: 9px; font-weight: 700; font-size: 15px; font-variant-numeric: tabular-nums; }
+.chapters button span { color: var(--red-on-ink); width: 40px; flex: none; }
+.chapters button:hover { color: var(--red-on-ink); }
+.list { display: grid; gap: 12px; min-width: 0; }
+.vid { all: unset; box-sizing: border-box; cursor: pointer; display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 14px; align-items: center; padding: 10px; border: 2px solid #333; background: #191919; width: 100%; }
+.vid:hover, .vid:focus-visible { border-color: #fff; }
+.vid[aria-current="true"] { border-color: var(--red-on-ink); background: #221114; }
+.vid.locked { cursor: default; opacity: 0.62; }
+.vid.locked:hover { border-color: #333; }
+.thumb { aspect-ratio: 16 / 9; position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 8px; font-family: var(--display); text-transform: uppercase; line-height: 0.92; font-size: 17px; }
+.thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.thumb .len { position: absolute; right: 5px; top: 5px; background: rgba(0,0,0,0.82); color: #fff; font-family: var(--body); font-weight: 700; font-size: 11px; padding: 2px 5px; line-height: 1.3; }
+.t-yellow { background: var(--yellow); color: var(--ink); }
+.t-yellow em { font-style: normal; color: var(--red); }
+.t-black { background: #000; color: #fff; outline: 1px solid #444; outline-offset: -1px; }
+.t-black em { font-style: normal; color: var(--red-on-ink); }
+.t-blue { background: var(--blue); color: #fff; font-family: var(--body); font-weight: 900; text-transform: none; font-size: 15px; letter-spacing: -0.02em; line-height: 1.05; }
+.t-blue em { font-style: normal; background: var(--red); padding: 0 3px; }
+.vid .info { min-width: 0; display: grid; gap: 4px; }
+.vid .day { font-size: 11.5px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #a5a39f; }
+.vid .title { font-weight: 800; font-size: 16px; line-height: 1.2; }
+.vid .stat { font-size: 13px; font-weight: 700; color: var(--red-on-ink); }
+.vid.locked .stat { color: #a5a39f; }
+.locked-screen { position: absolute; inset: 0; display: none; place-items: center; text-align: center; color: #fff; padding: 20px; }
+@media (max-width: 960px) { .hub { grid-template-columns: 1fr; } }
+@media (max-width: 420px) { .vid { grid-template-columns: 112px minmax(0, 1fr); } .thumb { font-size: 13px; } .t-blue { font-size: 12px; } }
+
+/* this week */
+.week { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+.day { border: 3px solid var(--ink); display: flex; flex-direction: column; min-width: 0; }
+.day .dh { background: var(--ink); color: #fff; padding: 8px 12px; display: flex; justify-content: space-between; align-items: baseline; }
+.day .dh .dn { font-family: var(--display); font-size: 26px; line-height: 1; text-transform: uppercase; }
+.day .dh .dt { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c9c7c3; }
+.day .db { padding: 12px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.day .issue { font-size: 11.5px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); }
+.day h3 { font-family: var(--display); text-transform: uppercase; font-size: 26px; line-height: 0.95; }
+.day .sub { font-size: 14px; color: var(--ink-2); line-height: 1.35; }
+.day .go { margin-top: auto; padding-top: 10px; font-weight: 800; font-size: 14px; }
+.day .go a { color: var(--red); }
+.day .go .wait { color: var(--ink-2); font-weight: 700; }
+.day.today { border-color: var(--red); }
+.day.today .dh { background: var(--red); }
+.day.vote { background: var(--red); border-color: var(--red); color: #fff; }
+.day.vote .dh { background: var(--ink); }
+.day.vote .issue, .day.vote .sub { color: #fff; }
+.day .flag { display: inline-block; align-self: flex-start; background: var(--yellow); color: var(--ink); font-size: 12px; font-weight: 800; padding: 2px 7px; }
+@media (max-width: 1100px) { .week { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .week { grid-template-columns: 1fr; } }
+
+/* office hours */
+.oh { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.slot { background: var(--stone); padding: 16px 14px 18px; display: flex; flex-direction: column; gap: 6px; border-top: 6px solid var(--ink); min-width: 0; }
+.slot .sd { font-family: var(--display); font-size: 34px; line-height: 0.9; text-transform: uppercase; }
+.slot .st { font-weight: 800; font-size: 17px; }
+.slot .sp { font-size: 15px; color: var(--ink-2); }
+.slot .badge { align-self: flex-start; background: var(--ink); color: #fff; font-size: 11.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 7px; }
+.slot.today { background: var(--red); color: #fff; border-color: var(--ink); }
+.slot.today .sp { color: #fff; }
+.slot.past { opacity: 0.45; }
+.ohfoot { margin-top: 18px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; font-weight: 600; }
+@media (max-width: 900px) { .oh { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* numbers */
+.nums { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border: 3px solid #fff; }
+.num-tile { padding: 22px 22px 20px; border-right: 3px solid #fff; border-bottom: 3px solid #fff; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.num-tile:nth-child(3n) { border-right: 0; }
+.num-tile:nth-last-child(-n+3) { border-bottom: 0; }
+.num-tile .v { font-family: var(--display); font-size: clamp(64px, 8vw, 112px); line-height: 0.85; color: var(--red-on-ink); font-variant-numeric: tabular-nums; }
+.num-tile .l { font-weight: 800; font-size: 16px; }
+.num-tile .how { font-size: 12px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #9d9b97; }
+.num-tile .how.live::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--red-on-ink); margin-right: 6px; vertical-align: 1px; animation: blink 1.6s ease-in-out infinite; }
+@keyframes blink { 50% { opacity: 0.25; } }
+.nums.pre .v { color: #3d3d3c; }
+.numnote { margin-top: 18px; display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; color: #c9c7c3; font-size: 15px; }
+.numnote b { color: #fff; }
+@media (max-width: 760px) {
+  .nums { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .num-tile { border-right: 3px solid #fff !important; border-bottom: 3px solid #fff !important; }
+  .num-tile:nth-child(2n) { border-right: 0 !important; }
+  .num-tile:nth-last-child(-n+2) { border-bottom: 0 !important; }
+}
 
 /* about */
 .about { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
-.about h3 { font-size: 22px; font-weight: 800; border-top: 4px solid var(--ink); padding-top: 10px; margin-bottom: 12px; }
-.about p { max-width: 58ch; }
+.about h3 { font-family: var(--display); font-size: 34px; text-transform: uppercase; line-height: 1; border-top: 4px solid var(--ink); padding-top: 12px; margin-bottom: 12px; }
+.about p { max-width: 58ch; font-size: 18px; }
 .about ul { margin: 0; padding: 0; list-style: none; }
-.about li { padding-block: 9px; border-bottom: 1px solid var(--rule); }
+.about li { padding-block: 10px; border-bottom: 2px solid var(--ink); font-weight: 600; }
 .about li:first-child { padding-top: 0; }
 @media (max-width: 760px) { .about { grid-template-columns: 1fr; } }
 
 /* talk */
-.talk { background: var(--ink); color: var(--paper); }
-.talk .wrap { padding-block: 56px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 36px; align-items: end; }
-.talk h2 { font-size: clamp(36px, 5vw, 64px); font-weight: 800; line-height: 0.98; }
-.talk h2 em { font-style: normal; color: var(--red); }
-.talk p { margin-top: 16px; color: #cfcdca; max-width: 46ch; }
-.btn { display: inline-flex; align-items: center; gap: 10px; background: var(--red); color: var(--red-ink); text-decoration: none; font-weight: 700; padding: 15px 20px; font-size: 18px; }
-.btn:hover { background: var(--paper); color: var(--ink); }
+.talk { background: var(--red); color: #fff; border-top: 3px solid var(--ink); }
+.talk .wrap { padding-block: 60px; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 36px; align-items: end; }
+.talk h2 { font-size: clamp(58px, 8vw, 112px); line-height: 0.86; }
+.talk p { margin-top: 18px; max-width: 46ch; font-size: 18px; font-weight: 500; }
+.talk .btn { background: var(--ink); border-color: var(--ink); color: #fff; }
+.talk .btn:hover { background: #fff; color: var(--ink); border-color: #fff; }
 .contact { display: grid; gap: 12px; }
-.row { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid #3a3a39; padding-top: 12px; flex-wrap: wrap; }
-.row .k { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: #a9a7a3; }
-.row .v { font-weight: 700; font-size: 18px; user-select: all; overflow-wrap: anywhere; }
-.copy-btn { all: unset; cursor: pointer; font-size: 13px; font-weight: 700; border: 1px solid #5a5a58; padding: 5px 10px; }
-.copy-btn:hover, .copy-btn:focus-visible { border-color: var(--paper); }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 2px solid rgba(255,255,255,0.45); padding-top: 12px; flex-wrap: wrap; }
+.row .k { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
+.row .v { font-weight: 800; font-size: 19px; user-select: all; overflow-wrap: anywhere; }
+.copy-btn { all: unset; cursor: pointer; font-size: 13px; font-weight: 800; border: 2px solid #fff; padding: 4px 10px; }
+.copy-btn:hover, .copy-btn:focus-visible { background: #fff; color: var(--red); }
 @media (max-width: 760px) { .talk .wrap { grid-template-columns: 1fr; align-items: start; } }
 
 /* footer */
-.foot .wrap { padding-block: 34px 44px; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
-.foot .big { color: var(--red); font-family: var(--display); font-weight: 800; font-size: clamp(40px, 7vw, 84px); line-height: 0.9; letter-spacing: -0.03em; }
-.foot p { color: var(--ink-2); font-size: 14px; max-width: 48ch; }
+.foot { background: var(--ink); color: #fff; }
+.foot .wrap { padding-block: 44px 48px; display: grid; gap: 18px; }
+.foot .big { font-family: var(--display); color: var(--red-on-ink); font-size: clamp(44px, 13vw, 176px); line-height: 0.84; text-transform: uppercase; white-space: nowrap; }
+.foot .line { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; font-size: 14px; color: #c9c7c3; }
+.foot .line b { color: #fff; font-variant-numeric: tabular-nums; }
+
+.preview { position: fixed; right: 12px; bottom: 12px; z-index: 50; background: var(--yellow); color: var(--ink); font-size: 12.5px; font-weight: 800; padding: 8px 12px; border: 2px solid var(--ink); max-width: 300px; line-height: 1.35; }
 </style>
-<style>body { margin: 0; } img { max-width: 100%; }</style>
 </head>
 <body>
 
+<div class="ticker" aria-live="off">
+  <div class="wrap">
+    <span id="tick-vote">Voting Nov 14–15</span>
+    <span class="hide-s">Executive candidate debate · Wed, Nov 11 · 8 PM</span>
+  </div>
+</div>
+
 <header class="bar">
   <div class="wrap">
-    <a class="name" href="#top"><i aria-hidden="true"></i>Kyle Davis for Comms</a>
+    <a class="mark" href="#top"><span class="bricks" aria-hidden="true"><i></i><i></i><i></i></span><span>Kyle for Comms</span></a>
     <nav aria-label="Sections">
       <a href="#plan">The plan</a>
-      <a href="#watch">Video</a>
-      <a href="#about">About</a>
-      <a href="#talk">Talk to me</a>
-      <a class="vote" href="#vote">Vote Nov. 14–15</a>
+      <a href="#videos">Videos</a>
+      <a href="#week">This week</a>
+      <a href="#hours">Office hours</a>
+      <a href="#numbers">The numbers</a>
+      <a class="vote" href="#vote">Vote Nov 14–15</a>
     </nav>
   </div>
 </header>
@@ -161,28 +276,38 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 <main id="top">
   <section class="hero" aria-label="Introduction">
     <div class="wrap">
-      <div class="logo">
-        <img src="logo.png" width="640" height="630" alt="Brick by Brick. Kyle Davis for Comms.">
-        <p class="quote">The IOP can be better. But only if we rebuild it, brick by brick.</p>
+      <div>
+        <p class="kick">For IOP Communications Director · Fall 2026</p>
+        <h1 class="d">Brick<br>by brick<span class="r">.</span></h1>
+        <p class="who">Kyle Davis for Comms</p>
+        <p class="lede">The IOP can be better. But only if we rebuild it, brick by brick.</p>
+        <div class="ctas">
+          <a class="btn red" href="#videos">Watch why I'm running ▸</a>
+          <a class="btn" href="#plan">Read the plan</a>
+        </div>
       </div>
-      <div class="stat">
-        <div class="num">38<small>%</small></div>
-        <p>approval for the IOP in HPR's campus poll. Dead last. I'm running to change that.</p>
-        <span class="src">Harvard Political Review, Fall 2025 Campus Poll, 114 respondents.</span>
+      <div>
+        <div class="poster">
+          <div class="bg" aria-hidden="true">Coverage creativity accountability coverage creativity</div>
+          <img src="kyle-cutout.png" width="630" height="924" alt="Kyle Davis">
+          <div class="sticker">
+            <div class="num">38<small>%</small></div>
+            <p>approval for the IOP in HPR's campus poll. Dead last. I'm running to change that.</p>
+          </div>
+        </div>
+        <p class="src">Harvard Political Review, Fall 2025 Campus Poll, 114 respondents.</p>
       </div>
-      <div class="photo"><img src="kyle-cutout.png" width="630" height="924" alt="Kyle Davis"><p class="tag">Kyle Davis<span>for IOP Communications Director</span></p></div>
     </div>
   </section>
 
+  <div class="marquee" aria-hidden="true"><div class="track" id="marquee"></div></div>
+
   <section class="sec" id="plan" aria-labelledby="plan-h">
     <div class="wrap">
-      <div class="sec-head">
-        <h2 id="plan-h">The plan</h2>
-        <p class="aside">Running for IOP Communications Director. Three commitments, fifteen specific things I'll do.</p>
-      </div>
+      <div class="head"><span class="n">01</span><h2 class="d" id="plan-h">The plan</h2><p class="aside">Three bricks. Fifteen specific things I'll do as your Communications Director.</p></div>
       <div class="plan">
         <article class="pillar">
-          <div class="top"><span class="n">1</span><h3>Coverage</h3></div>
+          <div class="top"><span class="k">1</span><h3>Coverage</h3></div>
           <p class="why">The IOP has 17 programs, but five were never mentioned in our weekly newsletters. A stronger reputation starts with showcasing all our work and talent.</p>
           <ul>
             <li><b>The Coverage Log</b><span>Keep a public log of programs featured in every email and post. If I skip someone, you'll see it.</span></li>
@@ -193,7 +318,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
           </ul>
         </article>
         <article class="pillar">
-          <div class="top"><span class="n">2</span><h3>Creativity</h3></div>
+          <div class="top"><span class="k">2</span><h3>Creativity</h3></div>
           <p class="why">Our communications need to be fun and engaging. I want to reinvigorate our videos and newsletters with fresh faces and new formats, and draw new people to the IOP.</p>
           <ul>
             <li><b>Faces in Every Email</b><span>Real members at real events in every newsletter to showcase our community.</span></li>
@@ -205,7 +330,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
           </ul>
         </article>
         <article class="pillar">
-          <div class="top"><span class="n">3</span><h3>Accountability</h3></div>
+          <div class="top"><span class="k">3</span><h3>Accountability</h3></div>
           <p class="why">The only way to know we're moving in the right direction is to measure how people react to us. That's why we need accountability for promises made.</p>
           <ul>
             <li><b>Public SAC Minutes</b><span>Published within a week of every meeting. This is a student organization, not the National Security Council.</span></li>
@@ -218,37 +343,47 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
     </div>
   </section>
 
-  <section class="sec" id="watch" aria-labelledby="watch-h">
+  <section class="sec ink" id="videos" aria-labelledby="videos-h">
     <div class="wrap">
-      <div class="sec-head"><h2 id="watch-h">Watch</h2><p class="aside">Two minutes on why I'm running and what I'll do.</p></div>
-      <div class="watch">
-        <div class="screen">
-          <video id="reel" controls playsinline preload="metadata" poster="poster-wide.jpg">
-            <source src="video.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="copy">
-          <div class="left">
-            <blockquote>Ask not what your country can do for you; ask what you can do for your country.</blockquote>
-            <p class="who">John F. Kennedy, Inaugural Address, January 20, 1961</p>
-            <p class="credit">Archival footage: John F. Kennedy Presidential Library and Museum.</p>
+      <div class="head"><span class="n">02</span><h2 class="d" id="videos-h">Videos</h2><p class="aside">One video a day this week, each in a different format. That's the Creativity brick, in practice.</p></div>
+      <div class="hub">
+        <div class="stage">
+          <div class="screen">
+            <video id="player" controls playsinline preload="metadata"></video>
           </div>
-          <ol class="chapters" aria-label="Jump to a part of the video">
-            <li><button type="button" data-t="0"><span>0:00</span>Why the IOP exists</button></li>
-            <li><button type="button" data-t="17"><span>0:17</span>Where we are: 38%</button></li>
-            <li><button type="button" data-t="43.5"><span>0:43</span>Who I am</button></li>
-            <li><button type="button" data-t="49"><span>0:49</span>1. Coverage</button></li>
-            <li><button type="button" data-t="74.6"><span>1:14</span>2. Creativity</button></li>
-            <li><button type="button" data-t="98.4"><span>1:38</span>3. Accountability</button></li>
-          </ol>
+          <div class="now" id="now"></div>
         </div>
+        <div class="list" id="vlist" aria-label="All campaign videos"></div>
       </div>
+    </div>
+  </section>
+
+  <section class="sec" id="week" aria-labelledby="week-h">
+    <div class="wrap">
+      <div class="head"><span class="n">03</span><h2 class="d" id="week-h">This week</h2><p class="aside">One email a day, each one brick of the plan plus a sample of the newsletter I'd send you. Missed one? Read it here.</p></div>
+      <div class="week" id="weekgrid"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="hours" aria-labelledby="hours-h" style="padding-top: 8px;">
+    <div class="wrap">
+      <div class="head"><span class="n">04</span><h2 class="d" id="hours-h">Office hours</h2><p class="aside">Tell me what the IOP gets wrong, in person. No appointment needed.</p></div>
+      <div class="oh" id="ohgrid"></div>
+      <div class="ohfoot"><span>Can't make any of these?</span><a class="btn red" href="https://bit.ly/3WfvOH4" target="_blank" rel="noopener">Book 15 minutes ▸</a></div>
+    </div>
+  </section>
+
+  <section class="sec ink" id="numbers" aria-labelledby="numbers-h">
+    <div class="wrap">
+      <div class="head"><span class="n">05</span><h2 class="d" id="numbers-h">The numbers</h2><p class="aside">If I'm asking the IOP to publish its numbers, I should go first. This campaign's numbers, updated every day.</p></div>
+      <div class="nums" id="nums"></div>
+      <div class="numnote"><span id="numstamp"></span><span>Replies and office-hours visitors are counted by hand. Plays and visits are counted automatically.</span></div>
     </div>
   </section>
 
   <section class="sec" id="about" aria-labelledby="about-h">
     <div class="wrap">
-      <div class="sec-head"><h2 id="about-h">About</h2></div>
+      <div class="head"><span class="n">06</span><h2 class="d" id="about-h">About</h2></div>
       <div class="about">
         <div>
           <h3>You may know me as...</h3>
@@ -270,11 +405,11 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   <section class="talk" id="talk" aria-labelledby="talk-h">
     <div class="wrap">
       <div>
-        <h2 id="talk-h">Here to listen <em>to you.</em></h2>
+        <h2 class="d" id="talk-h">Here to listen<br>to you.</h2>
         <p>Tell me what the IOP gets wrong, what your program wishes people knew, or what you'd want in your inbox. Fifteen minutes, your pick of time.</p>
       </div>
       <div class="contact">
-        <a class="btn" href="https://bit.ly/3WfvOH4" target="_blank" rel="noopener">Schedule a chat <span aria-hidden="true">→</span></a>
+        <a class="btn" href="https://bit.ly/3WfvOH4" target="_blank" rel="noopener">Schedule a chat ▸</a>
         <div class="row"><span class="k">Email</span><span class="v" id="email">kdavis@college.harvard.edu</span><button class="copy-btn" type="button" data-copy="email">Copy</button></div>
         <div class="row"><span class="k">Phone</span><span class="v" id="phone">812-345-1389</span><button class="copy-btn" type="button" data-copy="phone">Copy</button></div>
       </div>
@@ -284,24 +419,185 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 
 <footer class="foot" id="vote">
   <div class="wrap">
-    <div class="big">Vote Nov. 14–15</div>
-    <p>IOP executive board elections. Watch your inbox for the ballot from the Election Commission.</p>
+    <div class="big">Vote Nov 14–15</div>
+    <div class="line"><span id="foot-vote">IOP executive board elections. Watch your inbox for the ballot from the Election Commission.</span><span>A campaign site. Not an official IOP website.</span></div>
   </div>
 </footer>
 
 <script>
-  const v = document.getElementById("reel");
-  document.querySelectorAll(".chapters button").forEach(b => b.addEventListener("click", () => {
-    try { v.currentTime = parseFloat(b.dataset.t); v.play().catch(() => {}); } catch (e) {}
-    v.scrollIntoView({ block: "center", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
-  }));
-  document.querySelectorAll(".copy-btn").forEach(b => b.addEventListener("click", () => {
-    const el = document.getElementById(b.dataset.copy); const text = el.textContent.trim();
-    const done = () => { b.textContent = "Copied"; setTimeout(() => b.textContent = "Copy", 1500); };
-    const fallback = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Selected"; setTimeout(() => b.textContent = "Copy", 1500); };
-    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
-  }));
-</script>
+/* ======================== EDIT THESE DURING CAMPAIGN WEEK ======================== */
+// All times are Eastern. Each video and email unlocks at its release time.
+const VIDEOS = [
+  { key: "why", title: "Why I'm running", day: "Mon, Nov 9", release: "2026-11-09T12:00:00-05:00", len: "2:12",
+    src: "video.mp4", poster: "poster-wide.jpg", format: "The campaign video",
+    blurb: "Two minutes on why I'm running and what I'll do.",
+    credit: "Archival footage: John F. Kennedy Presidential Library and Museum.",
+    chapters: [[0, "Why the IOP exists"], [17, "Where we are: 38%"], [43.5, "Who I am"], [49, "1. Coverage"], [74.6, "2. Creativity"], [98.4, "3. Accountability"]] },
+  { key: "poll", title: "The Youth Poll, in 71 seconds", day: "Tue, Nov 10", release: "2026-11-10T12:00:00-05:00", len: "1:11",
+    src: "youth-poll.mp4", poster: "youth-poll.jpg", format: "Animated explainer · Brick 1",
+    blurb: "The big findings from HPOP's 53rd Harvard Youth Poll. Every program deserves coverage like this." },
+  { key: "readaloud", title: "I read the entire IOP newsletter out loud", day: "Wed, Nov 11", release: "2026-11-11T08:30:00-05:00", len: "0:55",
+    src: null, thumb: ["t-yellow", "I read the entire <em>IOP newsletter</em> out loud"], format: "The skit · Brick 2",
+    blurb: "Then the same week, my way, in 12 seconds." },
+  { key: "sotu", title: "The State of the IOP", day: "Thu, Nov 12", release: "2026-11-12T17:00:00-05:00", len: "1:10",
+    src: null, thumb: ["t-black", "The State <em>of the IOP</em>"], format: "The address · Brick 3",
+    blurb: "The state of our IOP is strong. How strong?" },
+  { key: "rewind", title: "Campaign week, rewound", day: "Fri, Nov 13", release: "2026-11-13T19:00:00-05:00", len: "0:50",
+    src: null, thumb: ["t-blue", "Campaign week, <em>rewound.</em>"], format: "The rewind · The close",
+    blurb: "My campaign's own numbers, as promised." },
+];
+// Emails: add `href` (for example "issues/01.html") once each one is sent.
+const ISSUES = [
+  { dn: "Mon", dt: "Nov 9",  issue: "The intro",   title: "Why I'm running",  sub: "The plan in three bricks, and the full campaign video.", release: "2026-11-09T12:00:00-05:00", href: null },
+  { dn: "Tue", dt: "Nov 10", issue: "Issue 01",    title: "Coverage",         sub: "Brick 1, plus the Youth Poll in 71 seconds.",            release: "2026-11-10T12:00:00-05:00", href: null },
+  { dn: "Wed", dt: "Nov 11", issue: "Issue 02",    title: "Creativity",       sub: "Brick 2, plus the newsletter, read out loud.",          release: "2026-11-11T08:30:00-05:00", href: null, flag: "Debate tonight, 8 PM" },
+  { dn: "Thu", dt: "Nov 12", issue: "Issue 03",    title: "Accountability",   sub: "Brick 3, plus the State of the IOP.",                   release: "2026-11-12T17:00:00-05:00", href: null },
+  { dn: "Fri", dt: "Nov 13", issue: "The close",   title: "The last one",     sub: "All three bricks, my numbers, and how to vote.",        release: "2026-11-13T19:00:00-05:00", href: null },
+];
+// Office hours: confirm these before the site goes live.
+const HOURS = [
+  { d: "Mon", date: "2026-11-09", time: "9–10 PM",  place: "Currier dining hall" },
+  { d: "Tue", date: "2026-11-10", time: "12–1 PM",  place: "Annenberg" },
+  { d: "Wed", date: "2026-11-11", time: "12–1 PM",  place: "A River house" },
+  { d: "Thu", date: "2026-11-12", time: "12–1 PM",  place: "Another River house" },
+  { d: "Fri", date: "2026-11-13", time: "10–11 AM", place: "Lamont Café" },
+];
+// Hand-counted numbers: update once a day.
+const NUMBERS = { updated: "Mon, Nov 9", emailsSent: 0, replies: 0, officeHours: 0, programsFeatured: 0 };
+const CAMPAIGN_START = "2026-11-09T12:00:00-05:00";
+const VOTE_OPENS = "2026-11-14T00:01:00-05:00";
+const VOTE_CLOSES = "2026-11-15T23:59:00-05:00";
+/* ================================================================================== */
 
+// Counting only happens on the real site, so previews never inflate the numbers.
+const LIVE = location.hostname === "kyle-for-comms.github.io";
+const COUNTER = "https://abacus.jasoncameron.dev";
+const NS = "kyle-for-comms-fall26";
+const params = new URLSearchParams(location.search);
+const PREVIEW_AT = params.get("asof") || (LIVE ? null : "2026-11-13T21:00:00-05:00");
+const now = () => PREVIEW_AT ? new Date(PREVIEW_AT) : new Date();
+const out = (t) => now() >= new Date(t);
+const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const fmtTime = (t) => new Date(t).toLocaleString("en-US", { weekday: "short", hour: "numeric", minute: "2-digit", timeZone: "America/New_York" }).replace(":00", "");
+async function counter(op, key) {
+  try { const r = await fetch(`${COUNTER}/${op}/${NS}/${key}`, { cache: "no-store" }); if (!r.ok) return null; const j = await r.json(); return typeof j.value === "number" ? j.value : null; }
+  catch (e) { return null; }
+}
+
+if (PREVIEW_AT) {
+  const b = document.createElement("div"); b.className = "preview";
+  b.textContent = `Preview: showing the site as of ${new Date(PREVIEW_AT).toLocaleString("en-US", { weekday: "long", hour: "numeric", minute: "2-digit", timeZone: "America/New_York" })}. Nothing is counted here.`;
+  document.body.appendChild(b);
+}
+
+// marquee
+(() => { const words = ["Coverage", "Creativity", "Accountability", "Vote Nov 14–15"]; const t = document.getElementById("marquee");
+  t.innerHTML = Array(6).fill(words.map(w => `<span>${w}</span>`).join("")).join(""); })();
+
+// countdown in the ticker and footer
+function countdown() {
+  const n = now(), o = new Date(VOTE_OPENS), c = new Date(VOTE_CLOSES);
+  const span = (ms) => { const m = Math.max(0, Math.floor(ms / 60000)); const d = Math.floor(m / 1440), h = Math.floor(m % 1440 / 60), mm = m % 60; return (d ? d + "d " : "") + h + "h " + String(mm).padStart(2, "0") + "m"; };
+  let txt, foot;
+  if (n < o) { txt = `Voting opens in <b>${span(o - n)}</b>`; foot = `Voting opens <b>Saturday, Nov 14, 12:01 AM</b> and closes <b>Sunday, Nov 15, 11:59 PM</b>. Watch your inbox for the ballot.`; }
+  else if (n < c) { txt = `Voting is open · closes in <b>${span(c - n)}</b>`; foot = `Voting is open until <b>Sunday, Nov 15, 11:59 PM</b>. The ballot is in your inbox.`; }
+  else { txt = `Voting has closed. Thank you.`; foot = `Voting has closed. Thank you for reading, watching, and writing back.`; }
+  document.getElementById("tick-vote").innerHTML = txt; document.getElementById("foot-vote").innerHTML = foot;
+}
+countdown(); setInterval(countdown, 30000);
+
+// videos
+const player = document.getElementById("player"), nowEl = document.getElementById("now"), list = document.getElementById("vlist");
+const plays = {}; let current = null; const counted = new Set();
+function thumbHTML(v) {
+  const inner = v.poster ? `<img src="${v.poster}" alt="" loading="lazy">` : `<span>${v.thumb[1]}</span>`;
+  return `<div class="thumb ${v.poster ? "" : v.thumb[0]}">${inner}<span class="len">${v.len}</span></div>`;
+}
+function renderList() {
+  list.innerHTML = VIDEOS.map((v, i) => {
+    const ready = out(v.release) && v.src; const when = out(v.release) ? "Posting soon" : `Drops ${fmtTime(v.release)}`;
+    const stat = ready ? (plays[v.key] != null ? `${plays[v.key].toLocaleString()} plays` : `Watch ▸`) : when;
+    return `<button class="vid ${ready ? "" : "locked"}" type="button" data-i="${i}" ${ready ? "" : 'aria-disabled="true"'} aria-current="${current === i}">
+      ${thumbHTML(v)}<span class="info"><span class="day">${v.day} · ${esc(v.format)}</span><span class="title">${esc(v.title)}</span><span class="stat">${stat}</span></span></button>`;
+  }).join("");
+  list.querySelectorAll(".vid").forEach(b => b.addEventListener("click", () => { const i = +b.dataset.i; const v = VIDEOS[i]; if (out(v.release) && v.src) { select(i, true); document.getElementById("videos").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); } }));
+}
+function select(i, play) {
+  const v = VIDEOS[i]; current = i;
+  player.poster = v.poster || ""; player.src = v.src; player.load();
+  if (play) player.play().catch(() => {});
+  nowEl.innerHTML = `<span class="meta">${v.day} · ${esc(v.format)} · ${v.len}</span><h3>${esc(v.title)}</h3><p>${esc(v.blurb)}</p>` +
+    (v.chapters ? `<ol class="chapters" aria-label="Jump to a part of the video">${v.chapters.map(c => `<li><button type="button" data-t="${c[0]}"><span>${Math.floor(c[0] / 60)}:${String(Math.floor(c[0] % 60)).padStart(2, "0")}</span>${esc(c[1])}</button></li>`).join("")}</ol>` : "") +
+    (v.credit ? `<p class="credit">${esc(v.credit)}</p>` : "");
+  nowEl.querySelectorAll(".chapters button").forEach(b => b.addEventListener("click", () => { try { player.currentTime = parseFloat(b.dataset.t); player.play().catch(() => {}); } catch (e) {} }));
+  renderList();
+}
+player.addEventListener("play", async () => {
+  const v = VIDEOS[current]; if (!v || counted.has(v.key)) return; counted.add(v.key);
+  if (LIVE) { const n = await counter("hit", "play-" + v.key); if (n != null) { plays[v.key] = n; renderList(); renderNumbers(); } }
+});
+// show the newest released video first
+(() => { let pick = 0; VIDEOS.forEach((v, i) => { if (out(v.release) && v.src) pick = i; }); select(pick, false); })();
+
+// this week
+function renderWeek() {
+  const n = now(), todayKey = n.toLocaleDateString("en-CA", { timeZone: "America/New_York" });
+  const days = ISSUES.map(x => {
+    const isToday = new Date(x.release).toLocaleDateString("en-CA", { timeZone: "America/New_York" }) === todayKey;
+    const go = out(x.release) ? (x.href ? `<a href="${x.href}">Read it ▸</a>` : `<span class="wait">In your inbox</span>`) : `<span class="wait">Arrives ${fmtTime(x.release)}</span>`;
+    return `<article class="day ${isToday ? "today" : ""}"><div class="dh"><span class="dn">${x.dn}</span><span class="dt">${x.dt}</span></div>
+      <div class="db"><span class="issue">${x.issue}</span><h3>${esc(x.title)}</h3><p class="sub">${esc(x.sub)}</p>${x.flag ? `<span class="flag">${esc(x.flag)}</span>` : ""}<div class="go">${go}</div></div></article>`;
+  });
+  days.push(`<article class="day vote"><div class="dh"><span class="dn">Sat–Sun</span><span class="dt">Nov 14–15</span></div>
+    <div class="db"><span class="issue">The ballot</span><h3>Vote</h3><p class="sub">Opens Saturday at 12:01 AM, closes Sunday at 11:59 PM.</p></div></article>`);
+  document.getElementById("weekgrid").innerHTML = days.join("");
+}
+renderWeek();
+
+// office hours
+(() => {
+  const todayKey = now().toLocaleDateString("en-CA", { timeZone: "America/New_York" });
+  document.getElementById("ohgrid").innerHTML = HOURS.map(h => {
+    const state = h.date === todayKey ? "today" : (h.date < todayKey ? "past" : "");
+    return `<div class="slot ${state}">${state === "today" ? '<span class="badge">Today</span>' : ""}<span class="sd">${h.d}</span><span class="st">${esc(h.time)}</span><span class="sp">${esc(h.place)}</span></div>`;
+  }).join("");
+})();
+
+// numbers
+let visits = null;
+function renderNumbers() {
+  const pre = !out(CAMPAIGN_START);
+  const totalPlays = Object.values(plays).reduce((a, b) => a + b, 0);
+  const tiles = [
+    [NUMBERS.emailsSent, "emails sent", "Counted by hand"],
+    [NUMBERS.replies, "replies to my emails", "Counted by hand"],
+    [NUMBERS.officeHours, "people at office hours", "Counted by hand"],
+    [NUMBERS.programsFeatured, "programs featured", "Counted by hand"],
+    [LIVE ? (Object.keys(plays).length ? totalPlays : "—") : "—", "video plays", "Live"],
+    [LIVE ? (visits ?? "—") : "—", "visits to this site", "Live"],
+  ];
+  const el = document.getElementById("nums"); el.classList.toggle("pre", pre);
+  el.innerHTML = tiles.map(t => `<div class="num-tile"><span class="v">${pre ? 0 : (typeof t[0] === "number" ? t[0].toLocaleString() : t[0])}</span><span class="l">${t[1]}</span><span class="how ${t[2] === "Live" && !pre ? "live" : ""}">${t[2]}</span></div>`).join("");
+  document.getElementById("numstamp").innerHTML = pre ? `<b>Live from Monday, Nov 9 at noon</b>, when the campaign starts.` : `<b>Last updated: ${esc(NUMBERS.updated)}</b>`;
+}
+renderNumbers();
+if (LIVE) {
+  (async () => {
+    const seen = (() => { try { return sessionStorage.getItem("kfc-visit"); } catch (e) { return "1"; } })();
+    visits = await counter(seen ? "get" : "hit", "visits");
+    try { sessionStorage.setItem("kfc-visit", "1"); } catch (e) {}
+    await Promise.all(VIDEOS.filter(v => out(v.release) && v.src).map(async v => { const n = await counter("get", "play-" + v.key); if (n != null) plays[v.key] = n; }));
+    renderList(); renderNumbers();
+  })();
+}
+
+// copy buttons
+document.querySelectorAll(".copy-btn").forEach(b => b.addEventListener("click", () => {
+  const el = document.getElementById(b.dataset.copy); const text = el.textContent.trim();
+  const done = () => { b.textContent = "Copied"; setTimeout(() => b.textContent = "Copy", 1500); };
+  const fallback = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Selected"; setTimeout(() => b.textContent = "Copy", 1500); };
+  try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+}));
+</script>
 </body>
 </html>
