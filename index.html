@@ -67,10 +67,9 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 /* hero */
 .hero .wrap { padding-block: 34px 40px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px; align-items: stretch; }
 .hero .kick { font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); }
-.hero h1 { font-size: clamp(92px, 13vw, 190px); line-height: 0.84; margin-top: 14px; }
-.hero h1 .r { color: var(--red); }
-.hero .who { font-weight: 900; font-size: clamp(24px, 2.6vw, 34px); letter-spacing: -0.02em; line-height: 1.05; margin-top: 22px; }
-.hero .lede { font-size: 19px; font-weight: 500; max-width: 34ch; margin-top: 12px; color: var(--ink-2); }
+.hero h1.logo { margin-top: 18px; line-height: 0; }
+.hero h1.logo img { width: 100%; max-width: 460px; height: auto; display: block; }
+.hero .lede { font-size: 19px; font-weight: 600; max-width: 34ch; margin-top: 20px; border-top: 4px solid var(--ink); padding-top: 12px; }
 .ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
 .btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); text-transform: uppercase; font-size: 21px; letter-spacing: 0.03em; padding: 13px 18px; border: 3px solid var(--ink); background: var(--paper); color: var(--ink); line-height: 1; }
 .btn:hover { background: var(--ink); color: #fff; }
@@ -86,6 +85,7 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 .src { font-size: 12.5px; color: var(--ink-2); margin-top: 8px; }
 @media (max-width: 900px) {
   .hero .wrap { grid-template-columns: 1fr; }
+  .hero h1.logo img { max-width: 340px; }
   .poster { min-height: 0; aspect-ratio: 4 / 4.2; }
 }
 @media (max-width: 520px) { .sticker { max-width: 78%; bottom: 18px; } .sticker p { font-size: 15px; } }
@@ -278,8 +278,7 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
     <div class="wrap">
       <div>
         <p class="kick">For IOP Communications Director · Fall 2026</p>
-        <h1 class="d">Brick<br>by brick<span class="r">.</span></h1>
-        <p class="who">Kyle Davis for Comms</p>
+        <h1 class="logo"><img src="logo.png" width="640" height="630" alt="Brick by Brick. Kyle Davis for Comms."></h1>
         <p class="lede">The IOP can be better. But only if we rebuild it, brick by brick.</p>
         <div class="ctas">
           <a class="btn red" href="#videos">Watch why I'm running ▸</a>
