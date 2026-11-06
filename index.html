@@ -53,7 +53,12 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 .bar { position: sticky; top: 0; z-index: 20; background: var(--paper); border-bottom: 3px solid var(--ink); }
 .bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; }
 .mark { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.mark img { height: 52px; width: auto; display: block; }
+.bricks { display: inline-grid; gap: 3px; flex: none; }
+.bricks i { display: block; height: 6px; background: var(--red); }
+.bricks i:nth-child(1), .bricks i:nth-child(3) { width: 20px; margin-left: 10px; }
+.bricks i:nth-child(2) { width: 30px; }
+.mark span { font-family: var(--display); font-size: 21px; letter-spacing: -0.01em; text-transform: uppercase; line-height: 1; white-space: nowrap; }
+@media (max-width: 420px) { .mark span { font-size: 17px; } .mark { gap: 8px; } }
 .bar nav { display: flex; align-items: center; gap: 20px; }
 .bar nav a { text-decoration: none; font-weight: 700; font-size: 14.5px; }
 .bar nav a:hover { color: var(--red); }
@@ -258,7 +263,7 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 
 <header class="bar">
   <div class="wrap">
-    <a class="mark" href="#top"><img src="logo.png" width="640" height="630" alt="Brick by Brick. Kyle Davis for Comms."></a>
+    <a class="mark" href="#top"><span class="bricks" aria-hidden="true"><i></i><i></i><i></i></span><span>Kyle for Comms</span></a>
     <nav aria-label="Sections">
       <a href="#plan">The plan</a>
       <a href="#videos">Videos</a>
