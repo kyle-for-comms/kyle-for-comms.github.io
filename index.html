@@ -335,7 +335,6 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
   <section class="hero" aria-label="Introduction">
     <div class="wrap">
       <div>
-        <p class="kick">For IOP Communications Director · Fall 2026</p>
         <h1 class="logo"><img src="logo.png" width="640" height="630" alt="Brick by Brick. Kyle Davis for Comms."></h1>
         <p class="lede">The IOP can be better. But only if we rebuild it, brick by brick.</p>
         <div class="ctas">
@@ -580,7 +579,7 @@ function renderList() {
     const ready = out(v.release) && v.src; const when = out(v.release) ? "Posting soon" : `Drops ${fmtTime(v.release)}`;
     const stat = ready ? (plays[v.key] != null ? `${plays[v.key].toLocaleString()} plays` : `Watch ▸`) : when;
     return `<button class="vid ${ready ? "" : "locked"}" type="button" data-i="${i}" ${ready ? "" : 'aria-disabled="true"'} aria-current="${current === i}">
-      ${thumbHTML(v)}<span class="info"><span class="day">${v.day} · ${esc(v.format)}</span><span class="title">${esc(v.title)}</span><span class="stat">${stat}</span></span></button>`;
+      ${thumbHTML(v)}<span class="info"><span class="title">${esc(v.title)}</span><span class="stat">${stat}</span></span></button>`;
   }).join("");
   list.querySelectorAll(".vid").forEach(b => b.addEventListener("click", () => { const i = +b.dataset.i; const v = VIDEOS[i]; if (out(v.release) && v.src) { select(i, true); document.getElementById("videos").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); } }));
 }
@@ -588,7 +587,7 @@ function select(i, play) {
   const v = VIDEOS[i]; current = i;
   player.poster = v.poster || ""; player.src = v.src; player.load();
   if (play) player.play().catch(() => {});
-  nowEl.innerHTML = `<span class="meta">${v.day} · ${esc(v.format)} · ${v.len}</span><h3>${esc(v.title)}</h3><p>${esc(v.blurb)}</p>` +
+  nowEl.innerHTML = `<h3>${esc(v.title)}</h3><p>${esc(v.blurb)}</p>` +
     (v.chapters ? `<ol class="chapters" aria-label="Jump to a part of the video">${v.chapters.map(c => `<li><button type="button" data-t="${c[0]}"><span>${Math.floor(c[0] / 60)}:${String(Math.floor(c[0] % 60)).padStart(2, "0")}</span>${esc(c[1])}</button></li>`).join("")}</ol>` : "") +
     (v.credit ? `<p class="credit">${esc(v.credit)}</p>` : "");
   nowEl.querySelectorAll(".chapters button").forEach(b => b.addEventListener("click", () => { try { player.currentTime = parseFloat(b.dataset.t); player.play().catch(() => {}); } catch (e) {} }));
