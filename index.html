@@ -122,6 +122,7 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 .pillar li:first-child { border-top-width: 3px; }
 .pillar li b { display: block; font-size: 17px; font-weight: 800; }
 .pillar li span { color: var(--ink-2); font-size: 15.5px; }
+.pillar li i { display: block; font-style: normal; color: var(--ink-2); font-size: 15.5px; margin-top: 6px; }
 @media (max-width: 900px) { .plan { grid-template-columns: 1fr; } }
 
 /* brick wall (built by JS from the .plan markup; .plan stays as the no-JS fallback) */
@@ -160,6 +161,7 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 .wall-card .chip.p3 { background: #fff; color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
 .wall-card h3 { font-family: var(--display); font-size: clamp(28px, 3.2vw, 40px); line-height: 1; letter-spacing: -0.035em; }
 .wall-card .desc { font-size: 19px; line-height: 1.45; max-width: 52ch; }
+.wall-card .more { font-size: 16.5px; line-height: 1.5; color: var(--ink-2); max-width: 56ch; border-left: 4px solid var(--red); padding-left: 12px; }
 .wall-card .why { background: var(--stone); padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 8px; }
 .wall-card .why .k { font: 700 12.5px/1 var(--body); letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); }
 .wall-card .why p { font-weight: 700; font-size: 16.5px; line-height: 1.42; }
@@ -174,6 +176,7 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
   .wall-card { grid-template-columns: 1fr; }
   .wall-card .main, .wall-card .why { padding: 18px 18px 16px; }
   .wall-card .desc { font-size: 17px; }
+  .wall-card .more { font-size: 15.5px; }
   .wall-filters button { font-size: 14px; padding: 9px 11px; }
 }
 
@@ -369,33 +372,33 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
           <div class="top"><span class="k">1</span><h3>Coverage</h3></div>
           <p class="why">The IOP has 17 programs, but five were never mentioned in our weekly newsletters. A stronger reputation starts with showcasing all our work and talent.</p>
           <ul>
-            <li><b>The Coverage Log</b><span>Keep a public log of programs featured in every email and post. If I skip someone, you'll see it.</span></li>
-            <li><b>Rotation</b><span>Feature two programs in each email so every part of the IOP gets its turn in the spotlight.</span></li>
-            <li><b>Pubbing Everywhere</b><span>Share IOP events across Houses and affinity groups, including Director's Internships and the One Fund.</span></li>
-            <li><b>Match Rejection with Suggestion</b><span>Suggest three other programs students can join that week, including the coalitions.</span></li>
-            <li><b>Snapshots</b><span>Continuing to ensure all IOP events always have a communications representative to document the moment.</span></li>
+            <li><b>The Coverage Log</b><span>Keep a public log of programs featured in every email and post. If I skip someone, you'll see it.</span><i>At the end of the semester, we will share a graph with everyone showing how we did so the student body can evaluate us.</i></li>
+            <li><b>Rotation</b><span>Feature two programs in each email so every part of the IOP gets its turn in the spotlight.</span><i>By the end, every program should be mentioned twice.</i></li>
+            <li><b>Pubbing Everywhere</b><span>Share IOP events across Houses and affinity groups, including Director's Internships and the One Fund.</span><i>We need to reach more people and more places so everyone, not just politics nerds, feels welcome in the IOP.</i></li>
+            <li><b>Match Rejection with Suggestion</b><span>If someone gets rejected from a selective program, suggest three other programs students can join that week, including the coalitions.</span><i>This will both help keep people in the IOP and can grow membership of the less represented groups.</i></li>
+            <li><b>Snapshots</b><span>Continuing to ensure all IOP events always have a communications representative to document the moment.</span><i>This way we never miss a beat.</i></li>
           </ul>
         </article>
         <article class="pillar">
           <div class="top"><span class="k">2</span><h3>Creativity</h3></div>
           <p class="why">Our communications need to be fun and engaging. I want to reinvigorate our videos and newsletters with fresh faces and new formats, and draw new people to the IOP.</p>
           <ul>
-            <li><b>Faces in Every Email</b><span>Real members at real events in every newsletter to showcase our community.</span></li>
-            <li><b>New Video Formats</b><span>Beyond the weekly recap: 60-second explainers, a day inside a program, skits, and interviews with IOP members.</span></li>
-            <li><b>Program Leads on Camera</b><span>Program leads in communications videos across the IOP to highlight unique experiences.</span></li>
-            <li><b>Supporting Student Journalism</b><span>Lead every Monday newsletter with HPR's pick of the previous week.</span></li>
-            <li><b>The IOP Yearbook</b><span>Capture all the memories through a digital yearbook and highlight memories from the IOP past, present, and future!</span></li>
-            <li><b>Podcasts</b><span>Want to hear from speakers, students, and mentors? Tune into podcasts with members and guests of the IOP to listen to discussions on what YOU want to know!</span></li>
+            <li><b>Faces in Every Email</b><span>Real members at real events in every newsletter to showcase our community.</span><i>This way you see us and not just graphics.</i></li>
+            <li><b>New Video Formats</b><span>Beyond the weekly recap: 60-second explainers, a day inside a program, skits, and interviews with IOP members.</span><i>I want to revolutionize the way we explain ourselves to the Harvard student body.</i></li>
+            <li><b>Program Leads on Camera</b><span>Program leads in communications videos across the IOP to highlight unique experiences.</span><i>I want the community to know who is leading our amazing programs so that everyone feels appreciated and younger members can be inspired to one day lead a program themselves.</i></li>
+            <li><b>Supporting Student Journalism</b><span>Lead every Monday newsletter with HPR's pick of the previous week.</span><i>This way we can help to showcase our amazing writers and also can aid in informing IOP members of what is going on in the country and the world.</i></li>
+            <li><b>The IOP Yearbook</b><span>Capture all the memories through a digital yearbook and highlight memories from the IOP past, present, and future!</span><i>Then you'll be able to share memories throughout the year.</i></li>
+            <li><b>Podcasts</b><span>Want to hear from speakers, students, and mentors? Tune into podcasts with members and guests of the IOP to listen to discussions on what YOU want to know.</span></li>
           </ul>
         </article>
         <article class="pillar">
           <div class="top"><span class="k">3</span><h3>Accountability</h3></div>
           <p class="why">The only way to know we're moving in the right direction is to measure how people react to us. That's why we need accountability for promises made.</p>
           <ul>
-            <li><b>Public SAC Minutes</b><span>Published within a week of every meeting. This is a student organization, not the National Security Council.</span></li>
-            <li><b>The State of the IOP</b><span>A twice-a-semester email with poll findings and program metrics.</span></li>
-            <li><b>HPR Polls Every Semester</b><span>Run the same public opinion poll every semester and publish the results, whatever they say.</span></li>
-            <li><b>IOP Operating Manual</b><span>Explain who to contact and how to submit your own proposal to SAC.</span></li>
+            <li><b>Public SAC Minutes</b><span>Published within a week of every meeting. This is a student organization, not the National Security Council.</span><i>I want people to feel like they know why decisions are being made and where people stand on issues so we can finally get rid of SAC's reputation for opacity.</i></li>
+            <li><b>The State of the IOP</b><span>A twice-a-semester email with poll findings and program metrics.</span><i>Through this email, people will know where we were, where we are, and where we are going next.</i></li>
+            <li><b>HPR Polls Every Semester</b><span>Run the same public opinion poll every semester and publish the results, whatever they say.</span><i>I will work with HPR leadership to make sure this happens, both for our own understanding of our work's perception and a broader mission to aid in transparent communication.</i></li>
+            <li><b>IOP Operating Manual</b><span>Explain who to contact and how to submit your own proposal to SAC.</span><i>Most people in the IOP don't know this is something they can do, and that shouldn't be the case.</i></li>
           </ul>
         </article>
       </div>
@@ -665,7 +668,7 @@ document.querySelectorAll(".copy-btn").forEach(b => b.addEventListener("click", 
   if (!plan || !wall) return;
   const pillars = [...plan.querySelectorAll('.pillar')].map((el, i) => ({
     n: i + 1, name: el.querySelector('h3').textContent.trim(), why: el.querySelector('.why').textContent.trim(),
-    items: [...el.querySelectorAll('li')].map(li => ({ t: li.querySelector('b').textContent.trim(), d: li.querySelector('span').textContent.trim() }))
+    items: [...el.querySelectorAll('li')].map(li => ({ t: li.querySelector('b').textContent.trim(), d: li.querySelector('span').textContent.trim(), m: (li.querySelector('i') || {}).textContent || '' }))
   }));
   const items = [];
   pillars.forEach(p => p.items.forEach(it => items.push({ ...it, p })));
@@ -723,7 +726,7 @@ document.querySelectorAll(".copy-btn").forEach(b => b.addEventListener("click", 
   function render() {
     const it = items[sel], p = it.p, vis = visible(), pos = vis.indexOf(sel);
     card.innerHTML = '<div class="main"><span class="chip p' + p.n + '">Brick ' + p.n + ' · ' + esc(p.name) + '</span><h3>' + esc(it.t) +
-      '</h3><p class="desc">' + esc(it.d) + '</p><div class="wall-nav"><button type="button" data-d="-1" aria-label="Previous proposal">◂ Prev</button><span class="pos">' +
+      '</h3><p class="desc">' + esc(it.d) + '</p>' + (it.m ? '<p class="more">' + esc(it.m.trim()) + '</p>' : '') + '<div class="wall-nav"><button type="button" data-d="-1" aria-label="Previous proposal">◂ Prev</button><span class="pos">' +
       String(pos + 1).padStart(2, '0') + ' / ' + String(vis.length).padStart(2, '0') + '</span><button type="button" data-d="1" aria-label="Next proposal">Next ▸</button></div></div>' +
       '<div class="why"><span class="k">The problem it fixes</span><p>' + esc(p.why) + '</p></div>';
     card.querySelectorAll('[data-d]').forEach(b => b.addEventListener('click', () => {
