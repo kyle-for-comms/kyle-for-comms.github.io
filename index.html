@@ -124,6 +124,59 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 .pillar li span { color: var(--ink-2); font-size: 15.5px; }
 @media (max-width: 900px) { .plan { grid-template-columns: 1fr; } }
 
+/* brick wall (built by JS from the .plan markup; .plan stays as the no-JS fallback) */
+.js-wall .plan { display: none; }
+.wall-ui { display: none; }
+.js-wall .wall-ui { display: block; }
+.wall-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.wall-filters button { font: 700 15px/1 var(--body); border: 3px solid var(--ink); background: #fff; color: var(--ink); padding: 10px 14px; cursor: pointer; display: inline-flex; gap: 8px; align-items: baseline; }
+.wall-filters button .c { font-weight: 400; color: var(--ink-2); }
+.wall-filters button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+.wall-filters button[aria-pressed="true"] .c { color: #c9c7c2; }
+.wall-filters button:focus-visible, .brick:focus-visible, .wall-nav button:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.wall { --cols: 9; display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: 6px; padding: 6px; background: var(--stone); }
+.brick { grid-column-end: span 2; min-height: 84px; border: 3px solid transparent; padding: 10px 12px 9px; text-align: left; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; gap: 6px; font: 700 17px/1.12 var(--display); letter-spacing: -0.02em; transition: transform .18s ease, box-shadow .18s ease, opacity .25s ease; position: relative; }
+.brick .no { font: 700 11.5px/1 var(--body); letter-spacing: 0.08em; opacity: .75; }
+.brick.p1 { background: var(--red); color: #fff; }
+.brick.p2 { background: var(--ink); color: #fff; }
+.brick.p3 { background: #fff; color: var(--ink); border-color: var(--ink); }
+.brick:hover { transform: translateY(-2px); }
+.brick[aria-pressed="true"] { transform: translate(-3px, -4px); box-shadow: 6px 7px 0 var(--ink); border-color: var(--ink); z-index: 1; }
+.brick.p2[aria-pressed="true"] { box-shadow: 6px 7px 0 var(--red); }
+.brick.dim { opacity: .16; }
+.brick.ghost { background: transparent; border: 3px dashed var(--red); color: var(--red); text-decoration: none; justify-content: center; align-items: flex-start; }
+.brick.ghost:hover { background: #fff; }
+.brick.ghost .no { font-size: 22px; opacity: 1; }
+.wall .cap { grid-column-end: span 1; background: #e2ded6; min-height: 84px; }
+@media (max-width: 760px) { .wall .cap { min-height: 74px; } }
+.wall.pre .brick { opacity: 0; transform: translateY(-40px); }
+.wall.pre .brick.drop { opacity: 1; transform: none; transition: transform .38s cubic-bezier(.3,1.5,.6,1), opacity .2s ease; }
+.wall.pre .brick.drop.dim { opacity: .16; }
+.wall-card { margin-top: 18px; border: 3px solid var(--ink); display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
+.wall-card .main { padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 12px; }
+.wall-card .chip { align-self: flex-start; font: 700 12.5px/1 var(--body); letter-spacing: 0.08em; text-transform: uppercase; padding: 7px 10px 6px; }
+.wall-card .chip.p1 { background: var(--red); color: #fff; }
+.wall-card .chip.p2 { background: var(--ink); color: #fff; }
+.wall-card .chip.p3 { background: #fff; color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
+.wall-card h3 { font-family: var(--display); font-size: clamp(28px, 3.2vw, 40px); line-height: 1; letter-spacing: -0.035em; }
+.wall-card .desc { font-size: 19px; line-height: 1.45; max-width: 52ch; }
+.wall-card .why { background: var(--stone); padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 8px; }
+.wall-card .why .k { font: 700 12.5px/1 var(--body); letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); }
+.wall-card .why p { font-weight: 700; font-size: 16.5px; line-height: 1.42; }
+.wall-nav { display: flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 8px; }
+.wall-nav button { font: 700 15px/1 var(--body); border: 3px solid var(--ink); background: #fff; padding: 9px 13px; cursor: pointer; }
+.wall-nav button:hover { background: var(--ink); color: #fff; }
+.wall-nav .pos { font: 700 14px/1 var(--body); color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.wall-hint { font-size: 14px; color: var(--ink-2); margin-top: 10px; }
+@media (max-width: 760px) {
+  .wall { --cols: 5; gap: 5px; padding: 5px; }
+  .brick { min-height: 74px; font-size: 15px; padding: 8px 10px 8px; }
+  .wall-card { grid-template-columns: 1fr; }
+  .wall-card .main, .wall-card .why { padding: 18px 18px 16px; }
+  .wall-card .desc { font-size: 17px; }
+  .wall-filters button { font-size: 14px; padding: 9px 11px; }
+}
+
 /* videos */
 .hub { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 28px; align-items: start; }
 .stage { min-width: 0; }
@@ -305,7 +358,12 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 
   <section class="sec" id="plan" aria-labelledby="plan-h">
     <div class="wrap">
-      <div class="head"><span class="n">01</span><h2 class="d" id="plan-h">The plan</h2><p class="aside">Three bricks. Fifteen specific things I'll do as your Communications Director.</p></div>
+      <div class="head"><span class="n">01</span><h2 class="d" id="plan-h">The plan</h2><p class="aside">Three bricks. Fifteen specific things I'll do as your Communications Director. Tap any brick.</p></div>
+      <div class="wall-ui">
+        <div class="wall-filters" role="group" aria-label="Filter proposals"></div>
+        <div class="wall" id="wall"></div>
+        <div class="wall-card" aria-live="polite"></div>
+      </div>
       <div class="plan">
         <article class="pillar">
           <div class="top"><span class="k">1</span><h3>Coverage</h3></div>
@@ -599,6 +657,107 @@ document.querySelectorAll(".copy-btn").forEach(b => b.addEventListener("click", 
   const fallback = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Selected"; setTimeout(() => b.textContent = "Copy", 1500); };
   try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
 }));
+
+/* ---------- brick wall ---------- */
+(function () {
+  const plan = document.querySelector('#plan .plan');
+  const wall = document.getElementById('wall');
+  if (!plan || !wall) return;
+  const pillars = [...plan.querySelectorAll('.pillar')].map((el, i) => ({
+    n: i + 1, name: el.querySelector('h3').textContent.trim(), why: el.querySelector('.why').textContent.trim(),
+    items: [...el.querySelectorAll('li')].map(li => ({ t: li.querySelector('b').textContent.trim(), d: li.querySelector('span').textContent.trim() }))
+  }));
+  const items = [];
+  pillars.forEach(p => p.items.forEach(it => items.push({ ...it, p })));
+  const total = items.length;
+  document.documentElement.classList.add('js-wall');
+
+  const filters = document.querySelector('.wall-filters');
+  const card = document.querySelector('.wall-card');
+  let filter = 0, sel = 0;
+
+  const mk = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
+  const esc = t => t.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  const fbtns = [{ n: 0, label: 'All', c: total }, ...pillars.map(p => ({ n: p.n, label: p.n + ' · ' + p.name, c: p.items.length }))].map(f => {
+    const b = mk('button', '', esc(f.label) + ' <span class="c">' + f.c + '</span>');
+    b.type = 'button'; b.setAttribute('aria-pressed', f.n === 0 ? 'true' : 'false');
+    b.addEventListener('click', () => setFilter(f.n));
+    filters.appendChild(b); return b;
+  });
+
+  const bricks = items.map((it, i) => {
+    const b = mk('button', 'brick p' + it.p.n, '<span class="no">' + String(i + 1).padStart(2, '0') + '</span><span>' + esc(it.t) + '</span>');
+    b.type = 'button'; b.setAttribute('aria-pressed', 'false');
+    b.setAttribute('aria-label', it.t + ', brick ' + it.p.n + ', ' + it.p.name);
+    b.addEventListener('click', () => select(i, true));
+    wall.appendChild(b); return b;
+  });
+  const ghost = mk('a', 'brick ghost', '<span class="no">+</span><span>Your brick</span>');
+  ghost.href = '#talk'; ghost.setAttribute('aria-label', 'Suggest your own proposal');
+  wall.appendChild(ghost);
+  const all = [...bricks, ghost];
+
+  /* lay bricks bottom-up in running bond: first brick sits on the bottom row */
+  function layout() {
+    const cols = parseInt(getComputedStyle(wall).getPropertyValue('--cols')) || 9;
+    const per = Math.floor(cols / 2);
+    const rows = Math.ceil(all.length / per);
+    all.forEach((b, i) => {
+      const r = Math.floor(i / per), k = i % per;
+      b.style.gridRow = String(rows - r);
+      b.style.gridColumnStart = String(1 + (r % 2) + k * 2);
+    });
+    wall.querySelectorAll('.cap').forEach(c => c.remove());
+    for (let r = 0; r < rows; r++) {
+      const c = document.createElement('i'); c.className = 'cap'; c.setAttribute('aria-hidden', 'true');
+      c.style.gridRow = String(rows - r); c.style.gridColumnStart = String(r % 2 ? 1 : per * 2 + 1);
+      wall.appendChild(c);
+    }
+  }
+  layout();
+  addEventListener('resize', layout);
+
+  function visible() { return items.map((_, i) => i).filter(i => !filter || items[i].p.n === filter); }
+
+  function render() {
+    const it = items[sel], p = it.p, vis = visible(), pos = vis.indexOf(sel);
+    card.innerHTML = '<div class="main"><span class="chip p' + p.n + '">Brick ' + p.n + ' · ' + esc(p.name) + '</span><h3>' + esc(it.t) +
+      '</h3><p class="desc">' + esc(it.d) + '</p><div class="wall-nav"><button type="button" data-d="-1" aria-label="Previous proposal">◂ Prev</button><span class="pos">' +
+      String(pos + 1).padStart(2, '0') + ' / ' + String(vis.length).padStart(2, '0') + '</span><button type="button" data-d="1" aria-label="Next proposal">Next ▸</button></div></div>' +
+      '<div class="why"><span class="k">The problem it fixes</span><p>' + esc(p.why) + '</p></div>';
+    card.querySelectorAll('[data-d]').forEach(b => b.addEventListener('click', () => {
+      const v = visible(), j = (v.indexOf(sel) + Number(b.dataset.d) + v.length) % v.length; select(v[j], false);
+    }));
+  }
+  function select(i, fromBrick) {
+    sel = i;
+    bricks.forEach((b, j) => b.setAttribute('aria-pressed', j === i ? 'true' : 'false'));
+    render();
+    if (fromBrick && innerWidth <= 760) card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  function setFilter(n) {
+    filter = n;
+    fbtns.forEach((b, j) => b.setAttribute('aria-pressed', j === n ? 'true' : 'false'));
+    bricks.forEach((b, j) => b.classList.toggle('dim', !!n && items[j].p.n !== n));
+    ghost.classList.toggle('dim', !!n);
+    if (n && items[sel].p.n !== n) select(visible()[0], false); else render();
+  }
+  select(0, false);
+
+  /* drop the bricks in one at a time, bottom row first */
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window);
+  if (!still) {
+    wall.classList.add('pre');
+    const io = new IntersectionObserver(es => {
+      if (!es.some(e => e.isIntersecting)) return;
+      io.disconnect();
+      all.forEach((b, i) => setTimeout(() => b.classList.add('drop'), 120 + i * 70));
+      setTimeout(() => { wall.classList.remove('pre'); all.forEach(b => b.classList.remove('drop')); }, 120 + all.length * 70 + 600);
+    }, { threshold: 0.25 });
+    io.observe(wall);
+  }
+})();
 </script>
 </body>
 </html>
