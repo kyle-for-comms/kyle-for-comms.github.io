@@ -130,7 +130,7 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 .wall-ui { display: none; }
 .js-wall .wall-ui { display: block; }
 .wall-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
-.wall-filters button { font: 700 15px/1 var(--body); border: 3px solid var(--ink); background: #fff; color: var(--ink); padding: 10px 14px; cursor: pointer; display: inline-flex; gap: 8px; align-items: baseline; }
+.wall-filters button { -webkit-appearance: none; appearance: none; border-radius: 0; -webkit-text-fill-color: currentColor; font: 700 15px/1 var(--body); border: 3px solid var(--ink); background: #fff; color: var(--ink); padding: 10px 14px; cursor: pointer; display: inline-flex; gap: 8px; align-items: baseline; }
 .wall-filters button .c { font-weight: 400; color: var(--ink-2); }
 .wall-filters button[aria-pressed="true"] { background: var(--ink); color: #fff; }
 .wall-filters button[aria-pressed="true"] .c { color: #c9c7c2; }
@@ -166,8 +166,8 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 .wall-card .why .k { font: 700 12.5px/1 var(--body); letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); }
 .wall-card .why p { font-weight: 700; font-size: 16.5px; line-height: 1.42; }
 .wall-nav { display: flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 8px; }
-.wall-nav button { font: 700 15px/1 var(--body); border: 3px solid var(--ink); background: #fff; padding: 9px 13px; cursor: pointer; }
-.wall-nav button:hover { background: var(--ink); color: #fff; }
+.wall-nav button { -webkit-appearance: none; appearance: none; font: 700 15px/1 var(--body); border: 3px solid var(--ink); background: var(--ink); color: #fff; -webkit-text-fill-color: #fff; padding: 10px 14px; border-radius: 0; cursor: pointer; }
+.wall-nav button:hover { background: var(--red); border-color: var(--red); }
 .wall-nav .pos { font: 700 14px/1 var(--body); color: var(--ink-2); font-variant-numeric: tabular-nums; }
 .wall-hint { font-size: 14px; color: var(--ink-2); margin-top: 10px; }
 @media (max-width: 760px) {
