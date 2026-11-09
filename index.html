@@ -455,7 +455,7 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
   <section class="sec ink" id="numbers" aria-labelledby="numbers-h">
     <div class="wrap">
       <div class="head"><h2 class="d" id="numbers-h">The numbers</h2><p class="aside">I'm asking the IOP to share its numbers, so it's only fair that I share mine. These update every day of the campaign.</p></div>
-      <div class="nums-box"><div class="nums" id="nums"></div><div class="numhold" id="numhold" hidden><span>My first numbers go up after day one.</span></div></div>
+      <div class="nums-box"><div class="nums" id="nums"></div><div class="numhold" id="numhold" hidden><span>Coming Soon</span></div></div>
       <div class="numnote"><span id="numstamp"></span><span>Replies and office-hours visitors are counted by hand. Plays and visits are counted automatically.</span></div>
     </div>
   </section>
@@ -662,7 +662,7 @@ function renderNumbers() {
   el.setAttribute("aria-hidden", hold ? "true" : "false");
   document.getElementById("numhold").hidden = !hold;
   el.innerHTML = tiles.map(t => `<div class="num-tile"><span class="v">${hold ? "00" : pre ? 0 : (typeof t[0] === "number" ? t[0].toLocaleString() : t[0])}</span><span class="l">${t[1]}</span><span class="how ${t[2] === "Live" && !pre ? "live" : ""}">${t[2]}</span></div>`).join("");
-  document.getElementById("numstamp").innerHTML = hold ? `<b>First update after day one.</b>` : pre ? `<b>Live from Monday, Nov 9 at noon</b>, when the campaign starts.` : `<b>Last updated: ${esc(NUMBERS.updated)}</b>`;
+  document.getElementById("numstamp").innerHTML = hold ? `<b>Coming soon.</b>` : pre ? `<b>Live from Monday, Nov 9 at noon</b>, when the campaign starts.` : `<b>Last updated: ${esc(NUMBERS.updated)}</b>`;
 }
 renderNumbers();
 if (LIVE) {
