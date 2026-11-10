@@ -617,8 +617,18 @@ player.addEventListener("play", async () => {
   const v = VIDEOS[current]; if (!v || counted.has(v.key)) return; counted.add(v.key);
   if (LIVE) { const n = await counter("hit", "play-" + v.key); if (n != null) { plays[v.key] = n; renderList(); renderNumbers(); } }
 });
-// show the newest released video first
-(() => { let pick = 0; VIDEOS.forEach((v, i) => { if (out(v.release) && v.src) pick = i; }); select(pick, false); })();
+// show the newest released video first, unless a link asks for a specific one (?v=poll or #video-poll)
+function wantedVideo() {
+  const k = params.get("v") || (location.hash.match(/^#video-([\w-]+)$/) || [])[1];
+  const i = k ? VIDEOS.findIndex(v => v.key === k) : -1;
+  return i >= 0 && out(VIDEOS[i].release) && VIDEOS[i].src ? i : -1;
+}
+(() => {
+  let pick = 0; VIDEOS.forEach((v, i) => { if (out(v.release) && v.src) pick = i; });
+  const w = wantedVideo(); select(w >= 0 ? w : pick, false);
+  if (w >= 0) requestAnimationFrame(() => setTimeout(() => document.getElementById("videos").scrollIntoView({ behavior: "auto" }), 150));
+})();
+addEventListener("hashchange", () => { const w = wantedVideo(); if (w >= 0) { select(w, false); document.getElementById("videos").scrollIntoView({ behavior: "smooth" }); } });
 
 // this week
 function renderWeek() {
