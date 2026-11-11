@@ -710,10 +710,20 @@ const now = () => PREVIEW_AT ? new Date(PREVIEW_AT) : new Date();
 const out = (t) => now() >= new Date(t);
 const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const fmtTime = (t) => new Date(t).toLocaleString("en-US", { weekday: "short", hour: "numeric", minute: "2-digit", timeZone: "America/New_York" }).replace(":00", "");
-async function counter(op, key) {
-  try { const r = await fetch(`${COUNTER}/${op}/${NS}/${key}`, { cache: "no-store" }); if (!r.ok) return null; const j = await r.json(); return typeof j.value === "number" ? j.value : null; }
-  catch (e) { return null; }
+// The free counter service is sometimes slow or briefly down, so reads time out and retry,
+// and the last counts this browser saw are shown in the meantime.
+async function counterOnce(op, key, ms) {
+  const ac = new AbortController(); const tm = setTimeout(() => ac.abort(), ms);
+  try { const r = await fetch(`${COUNTER}/${op}/${NS}/${key}`, { cache: "no-store", signal: ac.signal }); if (r.status === 404) return 0; if (!r.ok) return null; const j = await r.json(); return typeof j.value === "number" ? j.value : null; }
+  catch (e) { return null; } finally { clearTimeout(tm); }
 }
+async function counter(op, key) {
+  if (op !== "get") return counterOnce(op, key, 12000);
+  for (let i = 0; i < 3; i++) { const v = await counterOnce(op, key, [7000, 12000, 20000][i]); if (v != null) return v; await new Promise(r => setTimeout(r, 800 * (i + 1))); }
+  return null;
+}
+const SAVED = (() => { try { return JSON.parse(localStorage.getItem("kfc-counts") || "{}"); } catch (e) { return {}; } })();
+function saveCounts() { try { localStorage.setItem("kfc-counts", JSON.stringify({ plays, visits })); } catch (e) {} }
 
 if (PREVIEW_AT) {
   const b = document.createElement("div"); b.className = "preview";
@@ -765,7 +775,7 @@ function select(i, play) {
 }
 player.addEventListener("play", async () => {
   const v = VIDEOS[current]; if (!v || counted.has(v.key)) return; counted.add(v.key);
-  if (LIVE) { const n = await counter("hit", "play-" + v.key); if (n != null) { plays[v.key] = n; renderList(); renderNumbers(); } }
+  if (LIVE) { const n = await counter("hit", "play-" + v.key); if (n != null) { plays[v.key] = n; renderList(); renderNumbers(); saveCounts(); } }
 });
 // show the newest released video first, unless a link asks for a specific one (?v=poll or #video-poll)
 function wantedVideo() {
@@ -828,10 +838,18 @@ renderNumbers();
 if (LIVE) {
   (async () => {
     const seen = (() => { try { return sessionStorage.getItem("kfc-visit"); } catch (e) { return "1"; } })();
-    visits = await counter(seen ? "get" : "hit", "visits");
-    try { sessionStorage.setItem("kfc-visit", "1"); } catch (e) {}
-    await Promise.all(VIDEOS.filter(v => out(v.release) && v.src).map(async v => { const n = await counter("get", "play-" + v.key); if (n != null) plays[v.key] = n; }));
+    // Show the last counts this browser saw right away, then update each one as it arrives.
+    if (SAVED.plays) Object.entries(SAVED.plays).forEach(([k, n]) => { if (typeof n === "number" && plays[k] == null) plays[k] = n; });
+    if (typeof SAVED.visits === "number" && visits == null) visits = SAVED.visits;
     renderList(); renderNumbers();
+    const live = VIDEOS.filter(v => out(v.release) && v.src).map(async v => {
+      const n = await counter("get", "play-" + v.key);
+      if (n != null && n > 0) { plays[v.key] = Math.max(n, plays[v.key] || 0); renderList(); renderNumbers(); saveCounts(); }
+    });
+    const vn = await counter(seen ? "get" : "hit", "visits");
+    if (vn != null) { visits = Math.max(vn, visits || 0); renderNumbers(); saveCounts(); }
+    try { sessionStorage.setItem("kfc-visit", "1"); } catch (e) {}
+    await Promise.all(live);
   })();
 }
 
