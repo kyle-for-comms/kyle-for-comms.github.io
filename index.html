@@ -323,6 +323,126 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 .foot .line b { color: #fff; font-variant-numeric: tabular-nums; }
 
 .preview { position: fixed; right: 12px; bottom: 12px; z-index: 50; background: var(--yellow); color: var(--ink); font-size: 12.5px; font-weight: 800; padding: 8px 12px; border: 2px solid var(--ink); max-width: 300px; line-height: 1.35; }
+
+/* ===== Find your IOP (sorting quiz) ===== */
+.find { position: relative; }
+.quiz { border: 3px solid var(--ink); background: var(--stone); position: relative; overflow: hidden; }
+.quiz-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; background: var(--ink); color: #fff; padding: 10px 16px; font: 800 13px/1 var(--body); letter-spacing: 0.1em; text-transform: uppercase; }
+.quiz-top .dots { display: flex; gap: 6px; }
+.quiz-top .dots i { width: 22px; height: 7px; background: rgba(255,255,255,0.25); display: block; transition: background .25s ease; }
+.quiz-top .dots i.on { background: var(--red-on-ink); }
+.quiz-body { padding: clamp(20px, 4vw, 40px); min-height: 430px; display: flex; flex-direction: column; justify-content: center; }
+.q-start { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 28px; align-items: center; }
+.q-start h3 { font-family: var(--display); font-size: clamp(40px, 5.4vw, 72px); line-height: 0.9; letter-spacing: -0.035em; }
+.q-start h3 em { font-style: normal; color: var(--red); }
+.q-start p { font-size: 18px; font-weight: 600; color: var(--ink-2); margin-top: 14px; max-width: 40ch; }
+.q-start .btn { margin-top: 22px; }
+.crest-fan { position: relative; height: 260px; }
+.crest-fan svg { position: absolute; width: 132px; height: auto; left: 50%; top: 50%; transform-origin: 50% 120%; filter: drop-shadow(5px 6px 0 rgba(17,17,17,0.9)); transition: transform .5s cubic-bezier(.2,.9,.3,1.3); }
+.q-card { animation: qIn .38s cubic-bezier(.2,.9,.3,1) both; }
+@keyframes qIn { from { opacity: 0; transform: translateX(26px); } to { opacity: 1; transform: none; } }
+.q-card .qn { font: 800 13px/1 var(--body); letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); }
+.q-card h3 { font-family: var(--display); font-size: clamp(30px, 4vw, 50px); line-height: 0.95; letter-spacing: -0.035em; margin: 10px 0 22px; max-width: 22ch; }
+.q-opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.q-opt { -webkit-appearance: none; appearance: none; border-radius: 0; font: 700 17px/1.25 var(--body); text-align: left; padding: 16px 18px; border: 3px solid var(--ink); background: #fff; color: var(--ink); -webkit-text-fill-color: var(--ink); cursor: pointer; display: flex; gap: 12px; align-items: flex-start; transition: transform .15s ease, box-shadow .15s ease, background .15s ease; }
+.q-opt .l { font-family: var(--display); font-size: 22px; line-height: 0.9; color: var(--red); -webkit-text-fill-color: var(--red); flex: none; width: 20px; }
+.q-opt:hover { transform: translate(-2px, -3px); box-shadow: 5px 6px 0 var(--ink); }
+.q-opt.picked { background: var(--red); border-color: var(--ink); color: #fff; -webkit-text-fill-color: #fff; }
+.q-opt.picked .l { color: #fff; -webkit-text-fill-color: #fff; }
+.q-opt:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+@media (max-width: 760px) { .q-start { grid-template-columns: 1fr; } .crest-fan { height: 200px; } .crest-fan svg { width: 118px; } .q-opts { grid-template-columns: 1fr; } .quiz-body { min-height: 0; } }
+
+/* sorting + reveal */
+.sorting { display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center; }
+.sorting .slot { width: 170px; height: 200px; display: grid; place-items: center; }
+.sorting .slot svg { width: 170px; height: auto; filter: drop-shadow(6px 7px 0 var(--ink)); }
+.sorting p { font-family: var(--display); font-size: 30px; letter-spacing: -0.035em; }
+.reveal { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 34px; align-items: center; }
+.reveal .hero-crest { display: grid; place-items: center; position: relative; }
+.reveal .hero-crest svg { width: min(250px, 70vw); height: auto; filter: drop-shadow(8px 10px 0 var(--ink)); animation: crestIn 1s cubic-bezier(.2,1.4,.4,1) both; }
+@keyframes crestIn { 0% { transform: perspective(700px) rotateY(540deg) scale(.25); opacity: 0; } 60% { opacity: 1; } 100% { transform: perspective(700px) rotateY(0) scale(1); } }
+.reveal .burst { position: absolute; inset: -30px; z-index: -1; animation: spin 18s linear infinite; opacity: .9; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.reveal .kick { font: 800 13px/1 var(--body); letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); }
+.reveal h3 { font-family: var(--display); font-size: clamp(40px, 5.6vw, 76px); line-height: 0.9; letter-spacing: -0.035em; margin-top: 10px; animation: qIn .5s .55s both; }
+.reveal .because { font-size: 19px; font-weight: 600; margin-top: 14px; max-width: 42ch; animation: qIn .5s .7s both; }
+.reveal .because b { color: var(--red); }
+.runners { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 22px; animation: qIn .5s .9s both; }
+.runner { display: flex; gap: 12px; align-items: center; border: 3px solid var(--ink); background: #fff; padding: 10px 12px; }
+.runner svg { width: 46px; height: auto; flex: none; }
+.runner .rk { font: 800 11px/1 var(--body); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-2); }
+.runner .rn { font-family: var(--display); font-size: 19px; line-height: 1; letter-spacing: -0.03em; margin-top: 4px; }
+.r-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; animation: qIn .5s 1.05s both; }
+.r-actions .btn { font-size: 17px; padding: 11px 15px; }
+.r-actions button.btn { cursor: pointer; font-family: var(--display); }
+@media (max-width: 760px) { .reveal { grid-template-columns: 1fr; text-align: left; } .runners { grid-template-columns: 1fr; } .reveal .hero-crest svg { width: 180px; } }
+.confetti { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.confetti i { position: absolute; top: -20px; width: 18px; height: 8px; background: var(--red); animation: fall linear forwards; }
+@keyframes fall { to { transform: translateY(560px) rotate(var(--r, 300deg)); opacity: .2; } }
+
+/* ===== IOP Wrapped ===== */
+.wrapped-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 400px); gap: 34px; align-items: start; }
+.w-pick h3 { font-family: var(--display); font-size: 30px; letter-spacing: -0.035em; line-height: 1; }
+.w-pick p { color: #c9c7c3; font-weight: 600; margin-top: 8px; max-width: 46ch; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.chip { -webkit-appearance: none; appearance: none; border-radius: 0; cursor: pointer; font: 800 14px/1 var(--body); padding: 10px 12px; border: 2px solid #fff; background: transparent; color: #fff; -webkit-text-fill-color: #fff; display: inline-flex; align-items: center; gap: 8px; transition: background .15s ease, transform .15s ease; }
+.chip i { width: 10px; height: 10px; display: block; background: var(--c); }
+.chip:hover { transform: translateY(-2px); }
+.chip[aria-pressed="true"] { background: var(--c); border-color: var(--c); }
+.chip[aria-pressed="true"] i { background: #fff; }
+.chip:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+.w-note { font-size: 13px; color: #a8a6a1; margin-top: 18px; max-width: 52ch; }
+.story { position: relative; aspect-ratio: 9 / 15; width: 100%; background: var(--c, var(--red)); color: #fff; overflow: hidden; border: 3px solid #fff; box-shadow: 10px 12px 0 var(--red-on-ink); user-select: none; transition: background .5s ease; }
+.story .bars { position: absolute; top: 12px; left: 12px; right: 12px; display: flex; gap: 5px; z-index: 5; }
+.story .bars span { flex: 1; height: 4px; background: rgba(255,255,255,0.35); overflow: hidden; }
+.story .bars span b { display: block; height: 100%; width: 0; background: #fff; }
+.story .bars span.w-done b { width: 100%; }
+.story .bars span.w-now b { animation: bar var(--dur, 5.5s) linear forwards; }
+.story.paused .bars span.w-now b { animation-play-state: paused; }
+@keyframes bar { to { width: 100%; } }
+.story .brand { position: absolute; top: 26px; left: 14px; right: 14px; display: flex; justify-content: space-between; z-index: 5; font: 800 11px/1 var(--body); letter-spacing: 0.12em; text-transform: uppercase; opacity: .85; }
+.story .tap { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 2fr; z-index: 4; }
+.story .tap button { all: unset; cursor: pointer; }
+.slide { position: absolute; inset: 0; padding: 62px 24px 26px; display: flex; flex-direction: column; justify-content: center; }
+.slide .k { font: 800 13px/1 var(--body); letter-spacing: 0.12em; text-transform: uppercase; opacity: .9; }
+.slide h4 { font-family: var(--display); font-weight: 400; font-size: 44px; line-height: 0.9; letter-spacing: -0.035em; margin: 10px 0 0; }
+.slide .big { font-family: var(--display); font-size: clamp(110px, 30vw, 150px); line-height: 0.82; letter-spacing: -0.05em; }
+.slide p { font-size: 18px; font-weight: 700; line-height: 1.3; margin-top: 14px; }
+.moments { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 14px; }
+.moments li { font-size: 19px; font-weight: 700; line-height: 1.25; padding-top: 12px; border-top: 2px solid rgba(255,255,255,.35); }
+.moments li:first-child { border-top: 0; padding-top: 0; }
+.moments li span { display: block; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; opacity: .8; margin-bottom: 4px; }
+.moments.three li { font-size: 16px; }
+.slide .sub { font-size: 14.5px; font-weight: 600; opacity: .85; margin-top: 10px; }
+.slide > * { animation: wIn .55s cubic-bezier(.2,.9,.3,1) both; }
+.slide > *:nth-child(2) { animation-delay: .12s; } .slide > *:nth-child(3) { animation-delay: .24s; } .slide > *:nth-child(4) { animation-delay: .36s; } .slide > *:nth-child(5) { animation-delay: .48s; }
+@keyframes wIn { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+.slide.intro { justify-content: flex-end; }
+.slide.intro .stack { display: grid; gap: 6px; margin-bottom: auto; margin-top: 20px; }
+.slide.intro .stack i { display: block; height: 30px; background: rgba(255,255,255,0.92); animation: brickIn .5s cubic-bezier(.2,1.3,.4,1) both; }
+.slide.intro .stack i:nth-child(odd) { width: 62%; } .slide.intro .stack i:nth-child(even) { width: 84%; margin-left: 10%; }
+.slide.intro .stack i:nth-child(1) { animation-delay: .5s; } .slide.intro .stack i:nth-child(2) { animation-delay: .38s; } .slide.intro .stack i:nth-child(3) { animation-delay: .26s; } .slide.intro .stack i:nth-child(4) { animation-delay: .14s; } .slide.intro .stack i:nth-child(5) { animation-delay: .02s; }
+@keyframes brickIn { from { transform: translateY(-260px); opacity: 0; } to { transform: none; opacity: 1; } }
+.venn { position: relative; height: 150px; margin-top: 18px; }
+.venn span { position: absolute; top: 0; width: 150px; height: 150px; border-radius: 50%; display: grid; place-items: center; font: 800 15px/1.1 var(--body); text-align: center; padding: 18px; }
+.venn span:first-child { left: 0; background: rgba(255,255,255,0.95); color: var(--c); padding-right: 64px; }
+.venn span:last-child { left: 96px; border: 3px solid #fff; padding-left: 64px; animation: slideL .8s .5s cubic-bezier(.2,1.2,.4,1) both; }
+@keyframes slideL { from { transform: translateX(80px); opacity: 0; } to { transform: none; opacity: 1; } }
+.wk { display: flex; gap: 6px; margin-top: 18px; }
+.wk span { flex: 1; border: 2px solid #fff; padding: 10px 6px; text-align: center; font: 800 14px/1 var(--body); opacity: .45; }
+.wk span.hit { background: #fff; color: var(--c); opacity: 1; }
+.share { background: #fff; color: var(--ink); padding: 18px; border: 3px solid var(--ink); }
+.share .tt { font-family: var(--display); font-size: 30px; line-height: .92; letter-spacing: -0.035em; color: var(--c); }
+.share dl { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 14px; margin: 14px 0 0; }
+.share dt { font: 800 10.5px/1 var(--body); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-2); }
+.share dd { margin: 4px 0 0; font-family: var(--display); font-size: 22px; line-height: 1; letter-spacing: -0.03em; }
+.share .ft { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; border-top: 3px solid var(--ink); padding-top: 10px; font: 800 12px/1 var(--body); letter-spacing: 0.08em; text-transform: uppercase; }
+.share .ft .bricks i { background: var(--red); }
+.story-ctl { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; }
+.story-ctl button { -webkit-appearance: none; appearance: none; border-radius: 0; font: 800 14px/1 var(--body); padding: 10px 14px; border: 2px solid #fff; background: transparent; color: #fff; -webkit-text-fill-color: #fff; cursor: pointer; }
+.story-ctl button:hover { background: #fff; color: var(--ink); -webkit-text-fill-color: var(--ink); }
+@media (max-width: 860px) { .wrapped-grid { grid-template-columns: 1fr; } .story { max-width: 400px; margin: 0 auto; } .story-ctl { max-width: 400px; margin-left: auto; margin-right: auto; } }
+
 </style>
 </head>
 <body>
@@ -339,6 +459,8 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
     <a class="mark" href="#top"><span class="bricks" aria-hidden="true"><i></i><i></i><i></i></span><span>Kyle for Comms</span></a>
     <nav aria-label="Sections">
       <a href="#plan">The plan</a>
+      <a href="#find">Find your IOP</a>
+      <a href="#wrapped">Wrapped</a>
       <a href="#videos">Videos</a>
       <a href="#week">This week</a>
       <a href="#hours">Office hours</a>
@@ -418,6 +540,35 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
             <li><b>IOP Operating Manual</b><span>Explain who to contact and how to submit your own proposal to SAC.</span><i>Most people in the IOP don't know this is something they can do, and that shouldn't be the case.</i></li>
           </ul>
         </article>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="sec find" id="find" aria-labelledby="find-h">
+    <div class="wrap">
+      <div class="head"><h2 class="d" id="find-h">Find your IOP</h2><p class="aside">There are seventeen programs to choose from. Which one fits you?</p></div>
+      <div class="quiz" id="quiz">
+        <div class="quiz-top"><span id="q-label">The sorting</span><span class="dots" id="q-dots" aria-hidden="true"></span></div>
+        <div class="quiz-body" id="q-body" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec ink" id="wrapped" aria-labelledby="wrapped-h">
+    <div class="wrap">
+      <div class="head"><h2 class="d" id="wrapped-h">IOP Wrapped</h2><p class="aside">Spotify does it for your music. I'd do it for every program, every semester. Pick a program to see its fall.</p></div>
+      <div class="wrapped-grid">
+        <div class="w-pick">
+          <h3>Pick a program</h3>
+          <p>Tap through the story like you would on Instagram. Tap the right side to skip ahead and the left side to go back.</p>
+          <div class="chips" id="w-chips" role="group" aria-label="Programs"></div>
+          <p class="w-note">Member counts come from the Election Commission's 2026 IOP voter roll (945 members; anyone in two programs counts for both). Fall moments come from this semester's IOP-Announce emails and IOP event pages.</p>
+        </div>
+        <div>
+          <div class="story" id="story" aria-roledescription="story" aria-live="polite"></div>
+          <div class="story-ctl"><button type="button" id="w-pause">Pause</button><button type="button" id="w-restart">Replay</button></div>
+        </div>
       </div>
     </div>
   </section>
@@ -799,5 +950,258 @@ document.querySelectorAll(".copy-btn").forEach(b => b.addEventListener("click", 
   }
 })();
 </script>
+
+<script>
+(() => {
+/* ===== Shared program data =====
+   n / top / topPct / multi: from the Election Commission's 2026 IOP voter roll (945 members).
+   hi: a fact from this fall (IOP posts and Kyle's sample newsletters), or null.
+   feat: days a program was featured in Kyle's sample newsletters this week. */
+const PROGRAMS = [
+  { k: "CAP", name: "Campaigns and Advocacy Program", c: "#d40019", url: "campaigns-and-advocacy-program", n: 128, top: "HPU", topPct: 23, multi: 70,
+    what: "For those who want to build their campaign and advocacy skills and learn from the best.", because: "you’d rather change someone’s mind than just predict it.",
+    hi: [["Oct 13", "“The Youth Vote and the Midterms” with HPOP and Harvard Votes, featuring Teddy Landis and Jahnavi Rao of New Voters."], ["Nov 12", "Coming up: Francesca Hong, former candidate for governor of Wisconsin."]], feat: ["Wed"] },
+  { k: "CitTut", name: "Citizenship Tutoring", c: "#0a7d5a", url: "citizenship-tutoring", n: 115, top: "CIVICS", topPct: 26, multi: 64,
+    what: "Pairs undergrads with Harvard staff and neighbors preparing for the U.S. citizenship test.", because: "you know the best help usually happens one-on-one.",
+    hi: [["Fall", "Trained a whole new class of tutors to help neighbors prepare for the citizenship test."], ["Oct 28", "“Inequality in the US” with Teach For America and CIVICS."]], feat: ["Tue"] },
+  { k: "CIVICS", name: "CIVICS", c: "#0136fe", url: "civics", n: 207, top: "CitTut", topPct: 14, multi: 50,
+    what: "Puts undergrads in Boston-area classrooms to teach civics and government.", because: "you can make complicated topics feel simple, and you like doing it.",
+    hi: [["Fall", "IOP Fellow and former Arizona Governor Doug Ducey helped teach a CIVICS class about campaigning."], ["Oct 28", "Teamed up with Teach For America and CitTut on educators and educational inequality."]], feat: ["Wed"] },
+  { k: "Conferences", name: "Conferences Committee", c: "#6b3fa0", url: "conferences", n: 31, top: "FSG", topPct: 42, multi: 77,
+    what: "Plans and runs the IOP's biggest events, start to finish.", because: "you’re the one holding the plan, the backup plan, the backup-backup plan, and the backup-backup-backup plan (basically, you’re Leslie Knope).", hi: [["Fall", "Helping put on the New Members Conference to welcome this fall’s new IOP members."]], feat: [] },
+  { k: "PEP", name: "Program for Environmental Politics", c: "#2e7d32", url: "program-environmental-politics", n: 49, top: "CIVICS", topPct: 14, multi: 43,
+    what: "A home for students into environmental science, activism and politics.", because: "you’ve been thinking about the future of the world for a while.", hi: [["Oct 10", "Climate in Motion: a roundtable on “Building the Next Climate Movement” with climate scientists, media creators and activists."]], feat: [] },
+  { k: "FSG", name: "Fellows and Study Groups", c: "#111111", url: "fellows-and-study-groups", n: 173, top: "CAP", topPct: 16, multi: 64,
+    what: "Gets quality time with the Resident Fellows and plans the weekly study groups.", because: "you’ll ask the question everyone else in the room is too nervous to ask.",
+    hi: [["Oct 22", "Former FBI Director Christopher Wray joined Alejandro Mayorkas’s study group."], ["Oct 1", "James Carville sat in with Chris Whipple. John Podesta and Stuart Stevens followed."], ["Oct 5", "Senator Rubén Gallego joined Ambassador Nathalie Rayes."]], feat: ["Tue"] },
+  { k: "GAP", name: "Global Affairs Program", c: "#0b5f8a", url: "global-affairs-program-gap", n: 87, top: "FSG", topPct: 15, multi: 49,
+    what: "The only IOP program focused entirely on global affairs.", because: "you might beat out Pitbull for Mr. Worldwide status.", hi: [["Oct 22", "Careers in Global Affairs: four professionals on how they got there."], ["Nov 4", "The state of journalism in Latin America with Nieman Fellow Romina Mella."], ["Nov 5", "The future of AI governance with Ambassador Chris Lu."]], feat: ["Thu"] },
+  { k: "GovLab", name: "Governance Lab", c: "#d35400", url: "governance-lab-govlab", n: 28, top: "FSG", topPct: 14, multi: 25,
+    what: "Mentors and funds early-stage social impact startups.", because: "you see a problem and start brainstorming solutions before anyone asks you to.", hi: null, feat: [] },
+  { k: "HPR", name: "Harvard Political Review", c: "#a30013", url: "harvard-political-review-hpr", n: 102, top: "HPU", topPct: 16, multi: 50,
+    what: "Harvard's quarterly student journal of politics, policy and culture.", because: "every time you want to complain about something, you’re already outlining an op-ed in your head.",
+    hi: [["Nov 3", "“How Will the Senate Swing?” Johnny Perkins on three ways election night could break from the polls."]], feat: ["Tue", "Wed", "Thu"] },
+  { k: "HPU", name: "Harvard Political Union", c: "#3d3d9e", url: "harvard-political-union-hpu", n: 114, top: "CAP", topPct: 26, multi: 63,
+    what: "Harvard's home for political debate and discussion.", because: "you’re the devil’s advocate, because if you aren’t, who will be?", hi: [["Oct 23", "Family Weekend Debate in the JFK Jr. Forum: the College Democrats vs. the Conservative Coalition on the economy, education and immigration."]], feat: ["Thu"] },
+  { k: "HPOP", name: "Harvard Public Opinion Project", c: "#0077a8", url: "harvard-public-opinion-project-hpop", n: 39, top: "FSG", topPct: 44, multi: 62,
+    what: "Writes, analyzes and presents the Harvard Youth Poll.", because: "you trust the numbers more than vibes (future Steve Kornacki).",
+    hi: [["Fall", "Released the 53rd Harvard Youth Poll: Democrats lead by 37 points among likely young voters."], ["Oct 13", "Co-hosted “The Youth Vote and the Midterms” with CAP and Harvard Votes."]], feat: ["Tue"] },
+  { k: "HVC", name: "Harvard Votes Challenge", c: "#c2185b", url: "harvard-votes-challenge-hvc", n: 28, top: "FSG", topPct: 32, multi: 79,
+    what: "A nonpartisan push to get more of Harvard to the polls.", because: "you think showing up matters, and you want everyone else to show up too.", hi: [["Oct 3", "Rock the Vote in the Hasty Pudding Courtyard: Din & Tonics, On Thin Ice, THUD and more."], ["Oct 24", "Ballot Day: bagels, pizza, then a walk to the post office to mail ballots."], ["Nov 3", "Election Day bagels, pizza and button making at the John Harvard statue."]], feat: [] },
+  { k: "Forum", name: "JFK Jr. Forum", c: "#8a6d00", url: "john-f-kennedy-jr-forum", n: 61, top: "FSG", topPct: 25, multi: 46,
+    what: "Organizing Harvard's main stage for political speech and debate.", because: "you want a front-row seat in dictating the campus-wide conversation.",
+    hi: [["Fall", "Hosted Sierra Leone’s President Julius Maada Bio."], ["Oct 26", "Keri Russell and Ambassador Samantha Power on The Diplomat. Liz Cheney the next night."], ["Nov 3", "A packed Election Night: a panel, then the watch party."]], feat: ["Tue", "Wed", "Thu"] },
+  { k: "PRE", name: "Politics of Race and Ethnicity", c: "#7b2d26", url: "politics-race-and-ethnicity-pre", n: 46, top: "CIVICS", topPct: 39, multi: 72,
+    what: "Where race, ethnicity and politics meet, out loud.", because: "you care about elevating everyone and about rectifying historical injustice.", hi: [["Oct 7", "Hispanic Heritage Month Festival with Secretary Mayorkas, Ambassador Rayes, Mariachi Veritas, Harvard Folklórico and Candela."], ["Oct 13", "A conversation with Professor Sarah Lewis, founder of Vision & Justice."]], feat: [] },
+  { k: "RSG", name: "Research & Strategy Group", c: "#37474f", url: "research-strategy-group", n: 71, top: "Policy", topPct: 14, multi: 52,
+    what: "Takes on real research for nonprofit, public and private clients.", because: "you like a challenge, and you’re not afraid to pull an all-nighter to understand the context of a problem.", hi: null, feat: [] },
+  { k: "Policy", name: "The Policy Program", c: "#00695c", url: "policy-program", n: 111, top: "CIVICS", topPct: 17, multi: 50,
+    what: "Researches and builds policy solutions that could actually pass.", because: "you’d rather solve problems than complain about them.", hi: [["Oct 27", "Midpoint presentations: AI data compensation, money in the 2026 midterms, undocumented children, and rural opioids."]], feat: [] },
+  { k: "WIL", name: "Women's Initiative in Leadership", c: "#8e24aa", url: "womens-initiative-leadership-wil", n: 55, top: "FSG", topPct: 24, multi: 60,
+    what: "Connects students with women leading in every field.", because: "you want to lead, and bring other people up with you.",
+    hi: [["Oct 28", "An off-the-record roundtable on women’s leadership in diplomacy with Ambassadors Ángeles Moreno Bau and Nathalie Rayes."], ["Fall", "Brunch with Ambassador Chris Lu and Nancy-Ann DeParle."]], feat: ["Wed"] }
+];
+const P = Object.fromEntries(PROGRAMS.map(p => [p.k, p]));
+const IOP = "https://iop.harvard.edu/programs/";
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const esc = s => String(s).replace(/[&<>"]/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
+
+function crest(p, label) {
+  const t = label || p.k, fs = t.length > 6 ? 22 : t.length > 4 ? 28 : 36;
+  return `<svg viewBox="0 0 120 140" role="img" aria-label="${esc(p.name)} crest" xmlns="http://www.w3.org/2000/svg">
+    <path d="M60 4 L114 18 L114 70 C114 104 90 124 60 136 C30 124 6 104 6 70 L6 18 Z" fill="${p.c}" stroke="#111" stroke-width="5"/>
+    <path d="M60 14 L104 25 L104 70 C104 98 85 115 60 125 C35 115 16 98 16 70 L16 25 Z" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/>
+    <rect x="44" y="30" width="32" height="7" fill="#fff"/><rect x="38" y="40" width="44" height="7" fill="#fff"/><rect x="44" y="50" width="32" height="7" fill="#fff"/>
+    <text x="60" y="${86 + fs * 0.12}" text-anchor="middle" font-family="Logo Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="700" font-size="${fs}" letter-spacing="-1" fill="#fff">${esc(t)}</text>
+  </svg>`;
+}
+
+/* ===== Find your IOP ===== */
+(() => {
+  const Q = [
+    { q: "Your group chat is blowing up about a crazy article in the Crimson. What are you most likely to send?", a: [
+      ["“ok but hear me out, what if the opposite is true”", { HPU: 3, PRE: 1, Policy: 1 }],
+      ["“omg i know the author, she’s so crazy”", { FSG: 2, WIL: 2, Conferences: 1 }],
+      ["“this article uses the word tapestry in it 45 times, must be Chatted”", { HPOP: 3, RSG: 1, Policy: 1 }],
+      ["“wow the writing in this article is really bad!!”", { HPR: 2, Policy: 1 }] ] },
+    { q: "Free Saturday. Nothing due. What actually happens?", a: [
+      ["You fall three hours deep into a long read", { HPR: 2, GAP: 2 }],
+      ["You help a friend with the thing they’ve been stressing about", { CitTut: 3, CIVICS: 2 }],
+      ["You start applying to jobs", { GovLab: 3, RSG: 2 }],
+      ["You’re outside somewhere green with your phone off", { PEP: 3 }] ] },
+    { q: "Which compliment would stick with you the longest?", a: [
+      ["“You made that make sense to me.”", { CIVICS: 3, HPR: 1, CitTut: 1 }],
+      ["“You actually got people to show up.”", { HVC: 3, CAP: 2, Conferences: 1 }],
+      ["“I never thought about it that way.”", { PRE: 2, Policy: 2, HPU: 1, GovLab: 1 }],
+      ["“You always know who to ask.”", { FSG: 3, WIL: 1, Forum: 1 }] ] },
+    { q: "Pick your seat at a long dinner.", a: [
+      ["Next to the guest of honor. Obviously.", { Forum: 3, FSG: 1 }],
+      ["Next to the person who’s wearing a cool hat", { GAP: 3, PEP: 1 }],
+      ["Next to the quiet one nobody’s talked to yet", { PRE: 2, WIL: 2, CitTut: 1 }],
+      ["You’re standing.", { CAP: 2, HVC: 2, Conferences: 1 }] ] },
+    { q: "An issue on campus resonates with you, and you’d like to do something about it. What do you do?", a: [
+      ["Write about it in a scathing op-ed", { HPR: 2, HPU: 1, PRE: 1 }],
+      ["Draft a solution to the problem and send it to whoever’s in charge", { Policy: 2, GovLab: 2 }],
+      ["Get forty people to sign a petition by Friday", { CAP: 3, HVC: 2 }],
+      ["Ask the people involved to truly understand why the issue is a problem", { RSG: 2, HPOP: 1, PRE: 1 }] ] },
+    { q: "Ten years from now, who do you want to be?", a: [
+      ["The person who can make any gathering a great time.", { Conferences: 3, Forum: 2 }],
+      ["The person who gives people a second chance.", { CitTut: 2, CIVICS: 1, PRE: 1, WIL: 1 }],
+      ["The person who can see a crisis coming a mile away.", { HPOP: 2, GAP: 2, PEP: 1 }],
+      ["The person who can give a rousing speech to any room.", { HPU: 2, WIL: 2, CAP: 1 }] ] }
+  ];
+  const body = document.getElementById("q-body"), dots = document.getElementById("q-dots"), label = document.getElementById("q-label");
+  let step = -1, score = {};
+  dots.innerHTML = Q.map(() => "<i></i>").join("");
+  const setDots = n => [...dots.children].forEach((d, i) => d.classList.toggle("on", i < n));
+
+  function start() {
+    step = -1; score = {}; setDots(0); label.textContent = "The sorting";
+    const fan = ["HPR", "CIVICS", "Forum", "HPOP", "CAP"];
+    body.innerHTML = `<div class="q-start"><div><h3>Seventeen programs.<br><em>One is yours.</em></h3>
+      <p>Six questions. No wrong answers. Takes about a minute, and then we'll decide where you belong.</p>
+      <button class="btn red" type="button" id="q-go">Sort me ▸</button></div>
+      <div class="crest-fan" aria-hidden="true">${fan.map(k => crest(P[k])).join("")}</div></div>`;
+    body.querySelectorAll(".crest-fan svg").forEach((s, i) => { s.style.transform = `translate(calc(-50% + ${(i - 2) * 44}px), -50%) rotate(${(i - 2) * 12}deg) translateY(${Math.abs(i - 2) * 10}px)`; s.style.zIndex = 10 - Math.abs(i - 2); });
+    document.getElementById("q-go").onclick = next;
+  }
+  function next() {
+    step++;
+    if (step >= Q.length) return sort();
+    setDots(step); label.textContent = `Question ${step + 1} of ${Q.length}`;
+    const it = Q[step];
+    body.innerHTML = `<div class="q-card"><div class="qn">Question ${step + 1}</div><h3>${esc(it.q)}</h3>
+      <div class="q-opts">${it.a.map((x, i) => `<button class="q-opt" type="button" data-i="${i}"><span class="l">${"ABCD"[i]}</span><span>${esc(x[0])}</span></button>`).join("")}</div></div>`;
+    body.querySelectorAll(".q-opt").forEach(b => b.onclick = () => {
+      b.classList.add("picked");
+      Object.entries(it.a[+b.dataset.i][1]).forEach(([k, v]) => score[k] = (score[k] || 0) + v);
+      body.querySelectorAll(".q-opt").forEach(o => o.disabled = true);
+      setTimeout(next, reduce ? 0 : 260);
+    });
+    body.querySelector(".q-opt").focus({ preventScroll: true });
+  }
+  function ranked() {
+    return PROGRAMS.map(p => [p.k, (score[p.k] || 0) + Math.random() * 0.5]).sort((a, b) => b[1] - a[1]).map(x => P[x[0]]);
+  }
+  function sort() {
+    setDots(Q.length); label.textContent = "Sorting";
+    const order = ranked();
+    body.innerHTML = `<div class="sorting"><div class="slot" id="q-slot"></div><p>Hmm. Give me a second…</p></div>`;
+    const slot = document.getElementById("q-slot");
+    if (reduce) return reveal(order);
+    let i = 0, delay = 60;
+    (function spinTick() {
+      slot.innerHTML = crest(PROGRAMS[i++ % PROGRAMS.length]);
+      delay *= 1.16;
+      if (delay < 420) setTimeout(spinTick, delay); else setTimeout(() => reveal(order), 250);
+    })();
+  }
+  function reveal(order) {
+    const [a, b, c] = order;
+    label.textContent = "Sorted";
+    body.innerHTML = `<div class="reveal">
+      <div class="hero-crest">${burst(a.c)}${crest(a)}</div>
+      <div><div class="kick">We have decided.</div><h3>You belong in<br><span style="color:${a.c}">${esc(a.name)}</span>.</h3>
+        <p class="because">Because <b>${esc(a.because)}</b></p><p class="because" style="font-size:16px;color:var(--ink-2);margin-top:8px">${esc(a.k)} in one line: ${esc(a.what)}</p>
+        <div class="runners">${[b, c].map((p, i) => `<div class="runner">${crest(p)}<div><div class="rk">${i ? "Third pick" : "Runner-up"}</div><div class="rn">${esc(p.name)}</div></div></div>`).join("")}</div>
+        <div class="r-actions"><a class="btn red" href="${IOP + a.url}" target="_blank" rel="noopener">Meet ${esc(a.k)} ▸</a>
+          <button class="btn" type="button" id="q-wrap">See its Wrapped</button><button class="btn" type="button" id="q-again">Sort me again</button></div>
+      </div></div>`;
+    confetti(a.c);
+    document.getElementById("q-again").onclick = start;
+    document.getElementById("q-wrap").onclick = () => { window.openWrapped && window.openWrapped(a.k); document.getElementById("wrapped").scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); };
+  }
+  function burst(col) {
+    const rays = Array.from({ length: 16 }, (_, i) => { const a1 = (i / 16) * Math.PI * 2, a2 = a1 + Math.PI / 32;
+      return `<path d="M150 150 L${150 + 200 * Math.cos(a1)} ${150 + 200 * Math.sin(a1)} L${150 + 200 * Math.cos(a2)} ${150 + 200 * Math.sin(a2)} Z"/>`; }).join("");
+    return `<svg class="burst" viewBox="0 0 300 300" aria-hidden="true"><g fill="${col}" opacity=".18">${rays}</g></svg>`;
+  }
+  function confetti(col) {
+    if (reduce) return;
+    const box = document.createElement("div"); box.className = "confetti";
+    const cols = [col, "#d40019", "#111111", "#ffe14d", "#0136fe"];
+    box.innerHTML = Array.from({ length: 46 }, () => `<i style="left:${Math.random() * 100}%;background:${cols[Math.floor(Math.random() * cols.length)]};animation-duration:${1.4 + Math.random() * 1.6}s;animation-delay:${Math.random() * 0.5}s;--r:${(Math.random() * 720 - 360) | 0}deg"></i>`).join("");
+    document.getElementById("quiz").appendChild(box);
+    setTimeout(() => box.remove(), 3800);
+  }
+  start();
+})();
+
+/* ===== IOP Wrapped ===== */
+(() => {
+  const story = document.getElementById("story"), chips = document.getElementById("w-chips");
+  const pauseBtn = document.getElementById("w-pause"), restartBtn = document.getElementById("w-restart");
+  const DUR = 5500;
+  const durOf = i => (slides[i] || "").includes("moments") ? DUR + 2500 * ((slides[i].match(/<li>/g) || []).length - 1) : DUR;
+  let cur = null, idx = 0, timer = null, paused = false, slides = [];
+  const rankOf = p => 1 + PROGRAMS.filter(q => q.n > p.n).length;
+  const ord = n => n + (["th", "st", "nd", "rd"][(n % 100 > 10 && n % 100 < 14) ? 0 : (n % 10 < 4 ? n % 10 : 0)] || "th");
+
+  chips.innerHTML = PROGRAMS.map(p => `<button class="chip" type="button" style="--c:${p.c}" data-k="${p.k}" aria-pressed="false"><i></i>${esc(p.k)}</button>`).join("");
+  chips.querySelectorAll(".chip").forEach(b => b.onclick = () => open(b.dataset.k));
+
+  function build(p) {
+    const r = rankOf(p), top = P[p.top];
+    const sizeLine = r <= 4 ? `That makes ${p.k} the ${r === 1 ? "biggest" : ord(r) + " biggest"} program in the IOP.`
+      : r >= 13 ? `One of the IOP's most efficient teams.` : `${ord(r)} biggest of the IOP's 17 programs.`;
+    const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+    return [
+      `<div class="slide intro"><div class="stack" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="k">Fall 2026</div><h4 style="font-size:58px">${esc(p.k)}<br>Wrapped</h4>${p.name !== p.k ? `<p class="sub">${esc(p.name)}</p>` : ""}</div>`,
+      `<div class="slide"><div class="k">Your people</div><div class="big" data-count="${p.n}">0</div>
+        <p>members on the IOP voter roll.</p><p class="sub">${esc(sizeLine)}</p></div>`,
+      `<div class="slide"><div class="k">You get around</div><h4>${p.multi}% of you are in another program too.</h4>
+        <div class="venn" aria-hidden="true"><span>${esc(p.k)}</span><span>${esc(top.k)}</span></div>
+        <p class="sub">Your most common overlap: ${esc(top.name)}, at ${p.topPct}% of ${esc(p.k)}.</p></div>`,
+      p.hi ? `<div class="slide"><div class="k">Your fall</div><h4>${p.hi.length > 1 ? "The moments." : "The moment."}</h4>
+        <ol class="moments${p.hi.length > 2 ? " three" : ""}">${p.hi.map(([d, t]) => `<li><span>${esc(d)}</span>${esc(t)}</li>`).join("")}</ol></div>`
+           : `<div class="slide"><div class="k">What you do</div><h4>In one line.</h4><p style="font-size:22px">${esc(p.what)}</p><p class="sub">Send me this fall's big moment and it goes in the newsletter.</p></div>`,
+      `<div class="slide"><div class="k">In my newsletters this week</div>
+        <h4>${p.feat.length ? `Featured ${["", "once", "twice", "three times", "four times", "five times"][p.feat.length]}.` : "Not yet."}</h4>
+        <div class="wk">${days.map(d => `<span class="${p.feat.includes(d) ? "hit" : ""}">${d}</span>`).join("")}</div>
+        <p class="sub">${p.feat.length ? "Two programs rotate into every issue, and a public Coverage Log keeps score." : "That's the point of the Coverage Log: every program, at least twice a semester. No exceptions."}</p></div>`,
+      `<div class="slide"><div class="share">
+          <div class="k" style="color:var(--ink-2)">My IOP Wrapped · Fall 2026</div>
+          <div class="tt">${esc(p.name)}</div>
+          <dl><div><dt>Members</dt><dd>${p.n}</dd></div><div><dt>Size rank</dt><dd>${ord(r)} of 17</dd></div>
+              <div><dt>Also in</dt><dd>${esc(top.k)}</dd></div><div><dt>This week</dt><dd>${p.feat.length ? p.feat.join(" · ") : "Next up"}</dd></div></dl>
+          <div class="ft"><span>Brick by Brick</span><span class="bricks" aria-hidden="true"><i></i><i></i><i></i></span><span>Vote Nov 14–15</span></div>
+        </div><p class="sub" style="text-align:center">Every program gets one of these, every semester.</p></div>`
+    ];
+  }
+  function render() {
+    const p = P[cur];
+    story.style.setProperty("--c", p.c);
+    story.innerHTML = `<div class="bars">${slides.map((_, i) => `<span class="${i < idx ? "w-done" : i === idx ? "w-now" : ""}" style="--dur:${durOf(i)}ms"><b></b></span>`).join("")}</div>
+      <div class="brand"><span>IOP Wrapped</span><span>Kyle for Comms</span></div>
+      ${slides[idx]}
+      <div class="tap"><button type="button" aria-label="Previous slide"></button><button type="button" aria-label="Next slide"></button></div>`;
+    story.classList.toggle("paused", paused);
+    const [prev, nxt] = story.querySelectorAll(".tap button");
+    prev.onclick = () => go(idx - 1); nxt.onclick = () => go(idx + 1);
+    const big = story.querySelector("[data-count]");
+    if (big) { const to = +big.dataset.count, t0 = performance.now();
+      (function f(t) { const k = Math.min(1, (t - t0) / 1100); big.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(f); })(t0);
+      if (reduce) big.textContent = to; }
+    schedule();
+  }
+  function schedule() { clearTimeout(timer); if (!paused && idx < slides.length - 1) timer = setTimeout(() => go(idx + 1), durOf(idx)); }
+  function go(i) { if (i < 0) i = 0; if (i > slides.length - 1) return; idx = i; render(); }
+  function open(k) {
+    cur = k; idx = 0; paused = false; pauseBtn.textContent = "Pause"; slides = build(P[k]);
+    chips.querySelectorAll(".chip").forEach(b => b.setAttribute("aria-pressed", b.dataset.k === k ? "true" : "false"));
+    render();
+  }
+  pauseBtn.onclick = () => { paused = !paused; pauseBtn.textContent = paused ? "Play" : "Pause"; story.classList.toggle("paused", paused); schedule(); };
+  restartBtn.onclick = () => open(cur);
+  window.openWrapped = open;
+  // Start on the biggest program, but only play once the section is on screen.
+  cur = "CIVICS"; slides = build(P[cur]); paused = true; pauseBtn.textContent = "Play";
+  chips.querySelector('[data-k="CIVICS"]').setAttribute("aria-pressed", "true"); render();
+  new IntersectionObserver((es, io) => { if (es[0].isIntersecting) { io.disconnect(); if (cur === "CIVICS" && idx === 0) { paused = false; pauseBtn.textContent = "Pause"; render(); } } }, { threshold: 0.4 }).observe(story);
+})();
+})();
+</script>
+
 </body>
 </html>
