@@ -722,7 +722,11 @@ async function counter(op, key) {
   for (let i = 0; i < 3; i++) { const v = await counterOnce(op, key, [7000, 12000, 20000][i]); if (v != null) return v; await new Promise(r => setTimeout(r, 800 * (i + 1))); }
   return null;
 }
-const SAVED = (() => { try { return JSON.parse(localStorage.getItem("kfc-counts") || "{}"); } catch (e) { return {}; } })();
+// Last counts read from the counter (Wed, Nov 11, 11 AM). Shown only until fresher numbers load.
+const FLOOR = { plays: { why: 47, poll: 39, readaloud: 51 }, visits: 194 };
+const SAVED = (() => { let o = {}; try { o = JSON.parse(localStorage.getItem("kfc-counts") || "{}") || {}; } catch (e) {}
+  const p = Object.assign({}, FLOOR.plays); Object.entries(o.plays || {}).forEach(([k, n]) => { if (typeof n === "number") p[k] = Math.max(n, p[k] || 0); });
+  return { plays: p, visits: Math.max(typeof o.visits === "number" ? o.visits : 0, FLOOR.visits) }; })();
 function saveCounts() { try { localStorage.setItem("kfc-counts", JSON.stringify({ plays, visits })); } catch (e) {} }
 
 if (PREVIEW_AT) {
