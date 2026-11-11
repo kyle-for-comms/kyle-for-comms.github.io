@@ -483,6 +483,9 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 .g-page ul.check { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
 .g-page ul.check li { position: relative; padding-left: 24px; font-size: 15px; line-height: 1.35; }
 .g-page ul.check li::before { content: ""; position: absolute; left: 0; top: 3px; width: 12px; height: 12px; border: 2px solid var(--ink); }
+.g-mail { border: 2px solid var(--ink); background: var(--stone); padding: 12px 14px; display: grid; gap: 8px; font-size: 14px; line-height: 1.4; box-shadow: 4px 4px 0 var(--ink); }
+.g-mail p { font-size: 14px; }
+.g-mail p:first-child { border-bottom: 1px solid var(--rule); padding-bottom: 8px; }
 .g-tip { margin-top: auto; border-top: 2px dashed var(--ink); padding-top: 10px; font-size: 14.5px; line-height: 1.4; font-weight: 600; }
 .g-tip::before { content: "Tip"; display: inline-block; background: var(--yellow); color: var(--ink); font: 800 11px/1 var(--body); letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 6px 3px; margin-right: 8px; transform: translateY(-1px); }
 .g-tip.kyle::before { content: "What I'd add"; background: var(--ink); color: #fff; }
@@ -511,7 +514,7 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 @media (max-width: 980px) {
   .guide { grid-template-columns: 1fr; }
   .g-cover { position: relative; top: 0; box-shadow: 6px 6px 0 var(--ink); }
-  .g-tabs { grid-template-columns: 1fr 1fr; }
+  .g-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .g-lower { grid-template-columns: 1fr; }
 }
 @media (max-width: 680px) {
@@ -644,6 +647,7 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
           <div class="g-tabs" role="tablist" aria-label="Choose your guide">
             <button class="g-tab" type="button" role="tab" id="g-tab-pro" aria-controls="g-pro" aria-selected="true"><span class="n">01</span><b>Thinking about joining</b><span>You've never been, or you've been once.</span></button>
             <button class="g-tab" type="button" role="tab" id="g-tab-new" aria-controls="g-new" aria-selected="false" tabindex="-1"><span class="n">02</span><b>Just joined</b><span>You're in a program. Now what?</span></button>
+            <button class="g-tab" type="button" role="tab" id="g-tab-etq" aria-controls="g-etq" aria-selected="false" tabindex="-1"><span class="n">03</span><b>Professional etiquette</b><span>Emails, office hours, the Forum mic.</span></button>
           </div>
           <ol class="g-toc" id="g-toc" aria-label="Contents"></ol>
           <p class="g-fine">A sample written by Kyle Davis for his campaign. Not an official IOP document. Citations point to SAC's Policy and Procedures (October 2026).</p>
@@ -756,6 +760,62 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
                 <p>You can report <b>inappropriate conduct by a SAC member</b> to the Executive Committee for review. If the report involves someone on that committee, they sit out the discussion and the vote.</p>
                 <p class="g-tip">Not sure it rises to that? The Director of Internal Affairs is there as a point of contact between members, SAC and the Executive Team.</p>
                 <span class="g-cite">Art. III, Sec. 2.2; Art. II, Sec. 13</span>
+              </article>
+            </div>
+          </div>
+          <div class="g-track" id="g-etq" role="tabpanel" aria-labelledby="g-tab-pro2" hidden>
+            <div class="g-meta"><span class="for">For everyone</span><span>6 pages</span><span>3 min read</span></div>
+            <div class="g-pages">
+              <article class="g-page" id="ge-1">
+                <div class="top"><span class="pn">1</span><h4>The first email.</h4></div>
+                <p>Fellows, speakers and alumni get a lot of email. Make yours easy to say yes to: <b>who you are, one specific ask, and when you're free</b>. Five sentences, tops.</p>
+                <div class="g-mail" aria-label="Sample email">
+                  <p><b>Subject:</b> CIVICS sophomore: 15 minutes at office hours?</p>
+                  <p>Dear [Fellow's name],</p>
+                  <p>I'm a sophomore in CIVICS and came to your study group last week. Your point about [one thing they said] has stuck with me, and I'd love to ask you more about it. Would you have 15 minutes at office hours this month? I'm free most afternoons after 2.</p>
+                  <p>Thank you,<br>[Your name]</p>
+                </div>
+                <p class="g-tip">No reply after a week? Follow up once, in the same thread. Then let it go.</p>
+              </article>
+              <article class="g-page" id="ge-2">
+                <div class="top"><span class="pn">2</span><h4>Office hours.</h4></div>
+                <ul class="check">
+                  <li><b>Read their bio first.</b> Don't spend your time asking what they did. Ask why they did it.</li>
+                  <li><b>Bring two questions</b>, written down. One you'd ask anyone, one only they can answer.</li>
+                  <li><b>Watch the clock.</b> Wrap up a minute early. They'll remember that.</li>
+                  <li><b>Don't lead with your resume.</b> If they want it, they'll ask.</li>
+                </ul>
+                <p class="g-tip">Close with "Is there anyone else you think I should talk to?" It's the most useful question in the building.</p>
+              </article>
+              <article class="g-page" id="ge-3">
+                <div class="top"><span class="pn">3</span><h4>Ask a question, not a speech.</h4></div>
+                <p>At the Forum or in a study group, the mic is shared. Say <b>your name, your year, and one question</b>, ideally in under 30 seconds. If you need a paragraph of setup, it's an essay.</p>
+                <p class="g-tip">The best questions are ones the guest hasn't answered a hundred times. Skim their last few interviews before you go.</p>
+                <p class="g-tip">Disagree? Good. Do it respectfully, and let them finish their answer.</p>
+              </article>
+              <article class="g-page" id="ge-4">
+                <div class="top"><span class="pn">4</span><h4>Off the record means off.</h4></div>
+                <p>Small rooms work because guests can speak candidly. Unless you've been told otherwise, <b>ask before you quote, record or post</b> anything from a study group, a dinner or office hours.</p>
+                <p class="g-tip">That includes the group chat. Screenshots travel.</p>
+                <p class="g-tip">Want a photo? Ask at the end, not in the middle.</p>
+              </article>
+              <article class="g-page" id="ge-5">
+                <div class="top"><span class="pn">5</span><h4>When you're the host.</h4></div>
+                <p>Liaising for a Fellow or running an event, you're the face of the IOP, and the IOP is <b>nonpartisan</b>. Leave your own politics at the door and make every guest, and every student, feel welcome.</p>
+                <ul class="check">
+                  <li>Get there 10 minutes early</li>
+                  <li>Know how to say every guest's name</li>
+                  <li>Dress a step above the room</li>
+                  <li>Phone away unless you're running the slides</li>
+                </ul>
+                <p class="g-tip">Need something to wear? The One Fund has an attire fund for exactly this.</p>
+                <span class="g-cite">IOP Mission; Art. X, Sec. 1</span>
+              </article>
+              <article class="g-page" id="ge-6">
+                <div class="top"><span class="pn">6</span><h4>Say thank you. Then stay in touch.</h4></div>
+                <p>Send a thank-you within <b>24 hours</b>, and name one thing they said that you're going to use. A few months later, send an update on what you did with it. No ask attached.</p>
+                <p class="g-tip">That second email is the one people remember. It's how a conversation turns into a mentor.</p>
+                <p class="g-tip kyle">A template library in the guide: first emails, thank-yous, and how to ask for a reference.</p>
               </article>
             </div>
           </div>
@@ -1503,8 +1563,8 @@ function crest(p, label) {
       show(tabs[(i + d + tabs.length) % tabs.length], true);
     });
   });
-  show(tabs[location.hash === "#guide-new" ? 1 : 0]);
-  if (location.hash === "#guide-new") document.getElementById("guide").scrollIntoView();
+  show(tabs[({ "#guide-new": 1, "#guide-etiquette": 2 })[location.hash] || 0]);
+  if (location.hash === "#guide-new" || location.hash === "#guide-etiquette") document.getElementById("guide").scrollIntoView();
 })();
 </script>
 
