@@ -64,6 +64,9 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 .bar nav a:hover { color: var(--red); }
 .bar nav .vote { background: var(--red); color: #fff; padding: 9px 14px; font-family: var(--display); font-weight: 400; font-size: 16px; letter-spacing: -0.02em; }
 .bar nav .vote:hover { background: var(--ink); color: #fff; }
+.bar nav a { white-space: nowrap; }
+@media (max-width: 1240px) { .bar nav a.n2 { display: none; } }
+@media (max-width: 1060px) { .bar nav a.n3 { display: none; } }
 @media (max-width: 900px) { .bar nav a:not(.vote) { display: none; } }
 
 /* hero */
@@ -443,6 +446,80 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 .story-ctl button:hover { background: #fff; color: var(--ink); -webkit-text-fill-color: var(--ink); }
 @media (max-width: 860px) { .wrapped-grid { grid-template-columns: 1fr; } .story { max-width: 400px; margin: 0 auto; } .story-ctl { max-width: 400px; margin-left: auto; margin-right: auto; } }
 
+
+/* ===== The IOP Operating Guide (sample) ===== */
+.guide-sec { background: var(--stone); border-block: 3px solid var(--ink); }
+.guide { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 30px; align-items: start; }
+.g-cover { position: sticky; top: 92px; background: var(--red); color: #fff; border: 3px solid var(--ink); box-shadow: 8px 8px 0 var(--ink); padding: 22px 22px 20px; }
+.g-cover .ed { display: flex; justify-content: space-between; gap: 10px; font: 800 11.5px/1.2 var(--body); letter-spacing: 0.12em; text-transform: uppercase; border-bottom: 2px solid #fff; padding-bottom: 10px; }
+.g-cover h3 { font-family: var(--display); font-size: clamp(44px, 4.6vw, 58px); line-height: 0.88; letter-spacing: -0.035em; margin-top: 16px; }
+.g-cover .sub { font-weight: 700; font-size: 16px; line-height: 1.35; margin-top: 12px; }
+.g-tabs { display: grid; gap: 8px; margin-top: 20px; }
+.g-tab { -webkit-appearance: none; appearance: none; border-radius: 0; cursor: pointer; text-align: left; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 12px; align-items: baseline; padding: 12px 14px; border: 3px solid #fff; background: transparent; color: #fff; -webkit-text-fill-color: #fff; font-family: var(--body); }
+.g-tab .n { font-family: var(--display); font-size: 30px; line-height: 0.9; letter-spacing: -0.035em; grid-row: span 2; }
+.g-tab b { font-family: var(--display); font-weight: 400; font-size: 21px; line-height: 1; letter-spacing: -0.03em; }
+.g-tab span { font-size: 13.5px; font-weight: 600; line-height: 1.25; opacity: 0.9; }
+.g-tab:hover { background: rgba(255,255,255,0.12); }
+.g-tab[aria-selected="true"] { background: #fff; color: var(--ink); -webkit-text-fill-color: var(--ink); }
+.g-tab[aria-selected="true"] .n { color: var(--red); -webkit-text-fill-color: var(--red); }
+.g-toc { list-style: none; margin: 18px 0 0; padding: 0; border-top: 2px solid #fff; }
+.g-toc li { border-bottom: 1px solid rgba(255,255,255,0.35); }
+.g-toc button { -webkit-appearance: none; appearance: none; border: 0; border-radius: 0; background: none; cursor: pointer; width: 100%; display: flex; align-items: baseline; gap: 8px; padding: 8px 0; color: #fff; -webkit-text-fill-color: #fff; font: 700 14.5px/1.25 var(--body); text-align: left; }
+.g-toc button::after { content: ""; flex: 1; order: 1; border-bottom: 2px dotted rgba(255,255,255,0.7); transform: translateY(-4px); min-width: 16px; }
+.g-toc button i { order: 2; font-style: normal; font-variant-numeric: tabular-nums; }
+.g-toc button:hover { -webkit-text-fill-color: var(--yellow); color: var(--yellow); }
+.g-fine { font-size: 12px; line-height: 1.4; margin-top: 16px; opacity: 0.92; }
+
+.g-meta { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; background: var(--ink); color: #fff; padding: 11px 16px; font: 800 12.5px/1.2 var(--body); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 18px; }
+.g-meta .for { color: var(--red-on-ink); }
+.g-pages { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.g-page { position: relative; background: #fff; border: 3px solid var(--ink); padding: 20px 20px 16px; display: flex; flex-direction: column; gap: 10px; scroll-margin-top: 96px; animation: qIn .34s cubic-bezier(.2,.9,.3,1) both; }
+.g-page::before { content: ""; position: absolute; top: -3px; right: -3px; width: 26px; height: 26px; background: linear-gradient(225deg, var(--stone) 0 50%, var(--ink) 50% 56%, #e6e3dc 56%); }
+.g-page .top { display: flex; align-items: flex-start; gap: 12px; padding-right: 22px; }
+.g-page .pn { flex: none; background: var(--red); color: #fff; font-family: var(--display); font-size: 26px; line-height: 1; min-width: 40px; text-align: center; padding: 7px 6px 5px; letter-spacing: -0.03em; }
+.g-page h4 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(25px, 2.4vw, 31px); line-height: 0.95; letter-spacing: -0.035em; padding-top: 2px; }
+.g-page p { font-size: 16px; line-height: 1.45; }
+.g-page p b { font-weight: 800; }
+.g-page ul.check { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.g-page ul.check li { position: relative; padding-left: 24px; font-size: 15px; line-height: 1.35; }
+.g-page ul.check li::before { content: ""; position: absolute; left: 0; top: 3px; width: 12px; height: 12px; border: 2px solid var(--ink); }
+.g-tip { margin-top: auto; border-top: 2px dashed var(--ink); padding-top: 10px; font-size: 14.5px; line-height: 1.4; font-weight: 600; }
+.g-tip::before { content: "Tip"; display: inline-block; background: var(--yellow); color: var(--ink); font: 800 11px/1 var(--body); letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 6px 3px; margin-right: 8px; transform: translateY(-1px); }
+.g-tip.kyle::before { content: "What I'd add"; background: var(--ink); color: #fff; }
+.g-cite { align-self: flex-start; font: 700 12px/1 var(--body); letter-spacing: 0.04em; color: var(--ink-2); border: 2px solid var(--rule); padding: 5px 7px 4px; }
+.g-page a.in { font-weight: 800; color: var(--red); text-decoration: none; }
+.g-page a.in:hover { text-decoration: underline; }
+
+.g-lower { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 18px; margin-top: 30px; }
+.g-box { background: #fff; border: 3px solid var(--ink); }
+.g-box > h4 { margin: 0; background: var(--ink); color: #fff; padding: 11px 16px; font: 800 13px/1 var(--body); letter-spacing: 0.12em; text-transform: uppercase; display: flex; justify-content: space-between; gap: 10px; }
+.g-box > h4 span { color: #c9c7c3; font-weight: 700; letter-spacing: 0.06em; }
+.g-who { list-style: none; margin: 0; padding: 0; }
+.g-who li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4px 16px; padding: 11px 16px; border-top: 2px solid var(--stone); align-items: baseline; }
+.g-who li:first-child { border-top: 0; }
+.g-who .need { font-size: 15px; font-weight: 600; color: var(--ink-2); }
+.g-who .who { font-weight: 800; font-size: 15.5px; line-height: 1.25; }
+.g-who .who small { display: block; font-weight: 600; font-size: 12px; color: var(--ink-2); margin-top: 2px; }
+.g-speak { margin: 0; padding: 4px 16px 10px; }
+.g-speak div { padding: 9px 0; border-top: 2px solid var(--stone); }
+.g-speak div:first-child { border-top: 0; }
+.g-speak dt { font-family: var(--display); font-size: 20px; line-height: 1; letter-spacing: -0.03em; }
+.g-speak dd { margin: 4px 0 0; font-size: 14.5px; line-height: 1.4; color: var(--ink-2); font-weight: 600; }
+.g-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px 24px; margin-top: 24px; border-top: 3px solid var(--ink); padding-top: 18px; }
+.g-foot p { font-weight: 700; font-size: 17px; max-width: 56ch; }
+
+@media (max-width: 980px) {
+  .guide { grid-template-columns: 1fr; }
+  .g-cover { position: relative; top: 0; box-shadow: 6px 6px 0 var(--ink); }
+  .g-tabs { grid-template-columns: 1fr 1fr; }
+  .g-lower { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .g-pages { grid-template-columns: 1fr; }
+  .g-tabs { grid-template-columns: 1fr; }
+  .g-who li { grid-template-columns: 1fr; }
+}
+
 </style>
 </head>
 <body>
@@ -460,11 +537,12 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
     <nav aria-label="Sections">
       <a href="#plan">The plan</a>
       <a href="#find">Find your IOP</a>
+      <a href="#guide">The guide</a>
       <a href="#wrapped">Wrapped</a>
       <a href="#videos">Videos</a>
-      <a href="#week">This week</a>
-      <a href="#hours">Office hours</a>
-      <a href="#numbers">The numbers</a>
+      <a class="n2" href="#week">This week</a>
+      <a class="n3" href="#hours">Office hours</a>
+      <a class="n2" href="#numbers">The numbers</a>
       <a class="vote" href="#vote">Vote Nov 14–15</a>
     </nav>
   </div>
@@ -551,6 +629,171 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
       <div class="quiz" id="quiz">
         <div class="quiz-top"><span id="q-label">The sorting</span><span class="dots" id="q-dots" aria-hidden="true"></span></div>
         <div class="quiz-body" id="q-body" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec guide-sec" id="guide" aria-labelledby="guide-h">
+    <div class="wrap">
+      <div class="head"><h2 class="d" id="guide-h">The Operating Guide</h2><p class="aside">One of my fifteen proposals is an IOP operating manual: how the place actually works, who to ask, and the things you're allowed to do that most members never hear about. Here's a sample of what I'd publish.</p></div>
+      <div class="guide">
+        <aside class="g-cover" aria-label="Guide cover">
+          <div class="ed"><span>Edition 0 · Fall 2026</span><span>Sample</span></div>
+          <h3>The IOP Operating Guide</h3>
+          <p class="sub">How the IOP works, who runs what, and how to make it work for you.</p>
+          <div class="g-tabs" role="tablist" aria-label="Choose your guide">
+            <button class="g-tab" type="button" role="tab" id="g-tab-pro" aria-controls="g-pro" aria-selected="true"><span class="n">01</span><b>Thinking about joining</b><span>You've never been, or you've been once.</span></button>
+            <button class="g-tab" type="button" role="tab" id="g-tab-new" aria-controls="g-new" aria-selected="false" tabindex="-1"><span class="n">02</span><b>Just joined</b><span>You're in a program. Now what?</span></button>
+          </div>
+          <ol class="g-toc" id="g-toc" aria-label="Contents"></ol>
+          <p class="g-fine">A sample written by Kyle Davis for his campaign. Not an official IOP document. Citations point to SAC's Policy and Procedures (October 2026).</p>
+        </aside>
+
+        <div class="g-book">
+          <div class="g-track" id="g-pro" role="tabpanel" aria-labelledby="g-tab-pro">
+            <div class="g-meta"><span class="for">For prospective members</span><span>6 pages</span><span>3 min read</span></div>
+            <div class="g-pages">
+              <article class="g-page" id="gp-1">
+                <div class="top"><span class="pn">1</span><h4>You're already in.</h4></div>
+                <p>The IOP is open to <b>every Harvard College student</b>. Some programs take applications, but the IOP itself doesn't. Show up to anything and you're part of it.</p>
+                <p class="g-tip">Don't wait for the "right" program before you come to something. Most people find their program after their first few events, not before.</p>
+                <span class="g-cite">Preamble; Art. VII, Sec. 1</span>
+              </article>
+              <article class="g-page" id="gp-2">
+                <div class="top"><span class="pn">2</span><h4>Try it before you pick.</h4></div>
+                <p>Three ways in that don't need a program:</p>
+                <ul class="check">
+                  <li><b>A JFK Jr. Forum event.</b> RSVP and go.</li>
+                  <li><b>A Fellows' study group.</b> Weekly sessions with this semester's Resident Fellows and their guests.</li>
+                  <li><b>Fellows' office hours.</b> Any Harvard student can book one-on-one time.</li>
+                </ul>
+                <p class="g-tip">Bring one question written down. Office hours go by fast, and Fellows remember the students who come prepared.</p>
+              </article>
+              <article class="g-page" id="gp-3">
+                <div class="top"><span class="pn">3</span><h4>Pick a program. Or two.</h4></div>
+                <p>There are <b>17 programs</b>, from teaching civics in Boston classrooms to writing the Harvard Youth Poll. You don't have to choose just one: in 13 of the 17, at least half the members are in another program too.</p>
+                <p><a class="in" href="#find">Not sure where you fit? Take the quiz ▸</a></p>
+                <p class="g-tip">Pair a program that takes applications with one that doesn't, so you have a home while you wait to hear back.</p>
+                <span class="g-cite">Source: 2026 IOP voter roll</span>
+              </article>
+              <article class="g-page" id="gp-4">
+                <div class="top"><span class="pn">4</span><h4>Coalitions are the low-key option.</h4></div>
+                <p>Coalitions are opt-in networks around a topic or community. They share opportunities from across campus and host events, some open to everyone and some just for members. Right now there are four:</p>
+                <ul class="check">
+                  <li>Conservative Coalition</li>
+                  <li>Gender &amp; Sexuality Coalition</li>
+                  <li>Arts Coalition</li>
+                  <li>Service Coalition</li>
+                </ul>
+                <span class="g-cite">Art. II, Sec. 14</span>
+              </article>
+              <article class="g-page" id="gp-5">
+                <div class="top"><span class="pn">5</span><h4>Didn't get in? Ask why.</h4></div>
+                <p>Programs that pick members have to grade every application and interview on the <b>same standard criteria</b>. After decisions come out, any applicant can ask the chair to walk through how they did against those criteria.</p>
+                <p class="g-tip">Ask within a week and keep it simple: "What should I work on before I apply again?"</p>
+                <p class="g-tip kyle">Every rejection would come with three programs you can join that same week.</p>
+                <span class="g-cite">Art. VII, Sec. 3</span>
+              </article>
+              <article class="g-page" id="gp-6">
+                <div class="top"><span class="pn">6</span><h4>There's money for public service.</h4></div>
+                <p>The <b>One Fund</b> is one application for a handful of funds, open to every Harvard undergrad, in a program or not. It covers things like:</p>
+                <ul class="check">
+                  <li>Professional attire</li>
+                  <li>Travel for public-service work</li>
+                  <li>Research</li>
+                  <li>Your own public-service project, or your student group's</li>
+                </ul>
+                <p class="g-tip">You don't need to wait for a deadline. Applications are reviewed every week or two.</p>
+                <span class="g-cite">Art. X</span>
+              </article>
+            </div>
+          </div>
+
+          <div class="g-track" id="g-new" role="tabpanel" aria-labelledby="g-tab-new" hidden>
+            <div class="g-meta"><span class="for">For new members</span><span>6 pages</span><span>3 min read</span></div>
+            <div class="g-pages">
+              <article class="g-page" id="gn-1">
+                <div class="top"><span class="pn">1</span><h4>Sign in. Every time.</h4></div>
+                <p>Every program has to take attendance. Make it to <b>half of a program's meetings</b> and you can vote for the Executive Team and for that program's chair.</p>
+                <p class="g-tip">Missed the sign-in sheet? Tell your chair that day, not in November. The Election Commission builds the voter roll from attendance.</p>
+                <span class="g-cite">Art. V, Sec. 2.1, 2.2, 4.8 to 4.11</span>
+              </article>
+              <article class="g-page" id="gn-2">
+                <div class="top"><span class="pn">2</span><h4>That's also how you run.</h4></div>
+                <p>The attendance that lets you vote for chair also makes you eligible to <b>run for chair</b>. Terms are one year, and nobody can serve more than one full term chairing the same program, so every seat opens up.</p>
+                <p class="g-tip">Some programs pick their chairs by application instead of election. Ask yours which one it is early.</p>
+                <p class="g-tip">If you win, ask for the transition memo. Every outgoing chair has to write one, with contacts, plans and finances.</p>
+                <span class="g-cite">Art. V, Sec. 1.2 to 1.4, 6.10; Addendum I</span>
+              </article>
+              <article class="g-page" id="gn-3">
+                <div class="top"><span class="pn">3</span><h4>You can watch SAC.</h4></div>
+                <p>The Student Advisory Committee runs the IOP's student programs. It meets <b>at least six times a semester</b>, and its meetings are <b>open to observers</b>, except for executive sessions.</p>
+                <p class="g-tip">Ask your program chair when the next one is. They sit on SAC and vote there.</p>
+                <p class="g-tip kyle">Minutes from every meeting, published within a week.</p>
+                <span class="g-cite">Art. IV, Sec. 1.1, 1.3, 1.4</span>
+              </article>
+              <article class="g-page" id="gn-4">
+                <div class="top"><span class="pn">4</span><h4>Bring your own idea.</h4></div>
+                <p><b>Any Harvard undergrad</b> can bring a proposal to SAC. Send it in writing to the IOP President at least one week before the next meeting. The President and Vice President decide whether it goes to a vote.</p>
+                <p class="g-tip">Keep it to one page: the problem, what you want SAC to do, and what it would take. Then ask your chair to back it in the room.</p>
+                <span class="g-cite">Art. IV, Sec. 2.4</span>
+              </article>
+              <article class="g-page" id="gn-5">
+                <div class="top"><span class="pn">5</span><h4>Or start a whole program.</h4></div>
+                <p>New programs start as <b>pilot programs</b>, approved by a simple majority of SAC. A proposal has to:</p>
+                <ul class="check">
+                  <li>Fit the IOP's mission</li>
+                  <li>Fill a need no current program covers</li>
+                  <li>Lay out a realistic timeline, usually one year</li>
+                  <li>Say what funding, staff and student support it needs</li>
+                  <li>Give students real leadership roles</li>
+                </ul>
+                <p class="g-tip">After about a year, SAC votes to end it, extend it, or make it official.</p>
+                <span class="g-cite">Art. IV, Sec. 3.1 to 3.3</span>
+              </article>
+              <article class="g-page" id="gn-6">
+                <div class="top"><span class="pn">6</span><h4>If something's wrong, say so.</h4></div>
+                <p>You can report <b>inappropriate conduct by a SAC member</b> to the Executive Committee for review. If the report involves someone on that committee, they sit out the discussion and the vote.</p>
+                <p class="g-tip">Not sure it rises to that? The Director of Internal Affairs is there as a point of contact between members, SAC and the Executive Team.</p>
+                <span class="g-cite">Art. III, Sec. 2.2; Art. II, Sec. 13</span>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="g-lower">
+        <section class="g-box" aria-labelledby="g-who-h">
+          <h4 id="g-who-h">Who to ask <span>Back page</span></h4>
+          <ul class="g-who">
+            <li><span class="need">A proposal for SAC</span><span class="who">The President<small>Art. IV, Sec. 2.4</small></span></li>
+            <li><span class="need">One Fund money</span><span class="who">The Treasurer<small>Art. X, Sec. 2 and 3</small></span></li>
+            <li><span class="need">Getting your program in the newsletter</span><span class="who">The Communications Director<small>Art. II, Sec. 4</small></span></li>
+            <li><span class="need">Meeting people, socials, feeling new</span><span class="who">The Directors of Membership<small>Art. II, Sec. 9</small></span></li>
+            <li><span class="need">Internships and the Term-Time Stipend</span><span class="who">The Director of Career Services<small>Art. II, Sec. 11</small></span></li>
+            <li><span class="need">Joining or starting a coalition</span><span class="who">The Director of Organizing and Special Projects<small>Art. II, Sec. 12</small></span></li>
+            <li><span class="need">Making the IOP more welcoming</span><span class="who">The Directors of Diversity and Engagement<small>Art. II, Sec. 10</small></span></li>
+            <li><span class="need">Anything between you and SAC</span><span class="who">The Director of Internal Affairs<small>Art. II, Sec. 13</small></span></li>
+            <li><span class="need">Voting and voter rolls</span><span class="who">The Election Commission<small>elections@harvardiop.org · Art. V, Sec. 4.11</small></span></li>
+          </ul>
+        </section>
+        <section class="g-box" aria-labelledby="g-speak-h">
+          <h4 id="g-speak-h">IOP-speak <span>Glossary</span></h4>
+          <dl class="g-speak">
+            <div><dt>SAC</dt><dd>The Student Advisory Committee. The student leaders who run the IOP's programs and vote on how it works.</dd></div>
+            <div><dt>Exec</dt><dd>The Executive Team: President, Vice President, Treasurer and Communications Director.</dd></div>
+            <div><dt>Executive Committee</dt><dd>Exec plus the IOP's Director and Executive Director.</dd></div>
+            <div><dt>The Forum</dt><dd>The JFK Jr. Forum, where the IOP's biggest speaker events happen.</dd></div>
+            <div><dt>FSG</dt><dd>Fellows and Study Groups, the program that works with the Resident Fellows.</dd></div>
+            <div><dt>Coalition</dt><dd>An opt-in network. Coalition chairs sit on SAC but don't vote.</dd></div>
+            <div><dt>Voter roll</dt><dd>Who gets to vote in IOP elections. It's built from program attendance.</dd></div>
+          </dl>
+        </section>
+      </div>
+
+      <div class="g-foot">
+        <p>This is a first draft. As Comms Director I'd keep the real one updated all year, and I'd write it with the people who use it. What's missing?</p>
+        <a class="btn red" href="#talk">Tell me ▸</a>
       </div>
     </div>
   </section>
@@ -1221,6 +1464,47 @@ function crest(p, label) {
   chips.querySelector('[data-k="CIVICS"]').setAttribute("aria-pressed", "true"); render();
   new IntersectionObserver((es, io) => { if (es[0].isIntersecting) { io.disconnect(); if (cur === "CIVICS" && idx === 0) { paused = false; pauseBtn.textContent = "Pause"; render(); } } }, { threshold: 0.4 }).observe(story);
 })();
+})();
+</script>
+
+<script>
+/* ===== The IOP Operating Guide: tabs and contents ===== */
+(() => {
+  const tabs = [...document.querySelectorAll(".g-tab")];
+  const toc = document.getElementById("g-toc");
+  if (!tabs.length || !toc) return;
+  function show(tab, focus) {
+    tabs.forEach(t => {
+      const on = t === tab;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+    });
+    const panel = document.getElementById(tab.getAttribute("aria-controls"));
+    toc.innerHTML = "";
+    panel.querySelectorAll(".g-page").forEach(pg => {
+      const li = document.createElement("li");
+      const b = document.createElement("button");
+      b.type = "button";
+      b.innerHTML = `<span></span><i></i>`;
+      b.firstChild.textContent = pg.querySelector("h4").textContent;
+      b.lastChild.textContent = pg.querySelector(".pn").textContent;
+      b.addEventListener("click", () => { pg.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" }); });
+      li.appendChild(b); toc.appendChild(li);
+    });
+    if (focus) tab.focus();
+  }
+  tabs.forEach((t, i) => {
+    t.addEventListener("click", () => show(t));
+    t.addEventListener("keydown", e => {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft" && e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+      e.preventDefault();
+      const d = (e.key === "ArrowRight" || e.key === "ArrowDown") ? 1 : -1;
+      show(tabs[(i + d + tabs.length) % tabs.length], true);
+    });
+  });
+  show(tabs[location.hash === "#guide-new" ? 1 : 0]);
+  if (location.hash === "#guide-new") document.getElementById("guide").scrollIntoView();
 })();
 </script>
 
