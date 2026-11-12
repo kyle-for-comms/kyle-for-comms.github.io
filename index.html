@@ -452,7 +452,7 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 .guide { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 30px; align-items: start; }
 .g-cover { position: sticky; top: 92px; background: var(--red); color: #fff; border: 3px solid var(--ink); box-shadow: 8px 8px 0 var(--ink); padding: 22px 22px 20px; }
 .g-cover .ed { display: flex; justify-content: space-between; gap: 10px; font: 800 11.5px/1.2 var(--body); letter-spacing: 0.12em; text-transform: uppercase; border-bottom: 2px solid #fff; padding-bottom: 10px; }
-.g-cover h3 { font-family: var(--display); font-size: clamp(44px, 4.6vw, 58px); line-height: 0.88; letter-spacing: -0.035em; margin-top: 16px; }
+.g-cover h3 { font-family: var(--display); font-size: clamp(44px, 4.6vw, 58px); line-height: 0.88; letter-spacing: -0.035em; margin-top: 2px; }
 .g-cover .sub { font-weight: 700; font-size: 16px; line-height: 1.35; margin-top: 12px; }
 .g-tabs { display: grid; gap: 8px; margin-top: 20px; }
 .g-tab { -webkit-appearance: none; appearance: none; border-radius: 0; cursor: pointer; text-align: left; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 12px; align-items: baseline; padding: 12px 14px; border: 3px solid #fff; background: transparent; color: #fff; -webkit-text-fill-color: #fff; font-family: var(--body); }
@@ -641,7 +641,6 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
       <div class="head"><h2 class="d" id="guide-h">The Operating Guide</h2><p class="aside">One of my fifteen proposals is an IOP operating manual: how the place actually works, who to ask, and the things you're allowed to do that most members never hear about. Here's a sample of what I'd publish.</p></div>
       <div class="guide">
         <aside class="g-cover" aria-label="Guide cover">
-          <div class="ed"><span>Edition 0 · Fall 2026</span><span>Sample</span></div>
           <h3>The IOP Operating Guide</h3>
           <p class="sub">How the IOP works, who runs what, and how to make it work for you.</p>
           <div class="g-tabs" role="tablist" aria-label="Choose your guide">
@@ -650,12 +649,10 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
             <button class="g-tab" type="button" role="tab" id="g-tab-etq" aria-controls="g-etq" aria-selected="false" tabindex="-1"><span class="n">03</span><b>Professional etiquette</b><span>Emails, office hours, the Forum mic.</span></button>
           </div>
           <ol class="g-toc" id="g-toc" aria-label="Contents"></ol>
-          <p class="g-fine">A sample written by Kyle Davis for his campaign. Not an official IOP document.</p>
         </aside>
 
         <div class="g-book">
           <div class="g-track" id="g-pro" role="tabpanel" aria-labelledby="g-tab-pro">
-            <div class="g-meta"><span class="for">For prospective members</span><span>6 pages</span><span>3 min read</span></div>
             <div class="g-pages">
               <article class="g-page" id="gp-1">
                 <div class="top"><span class="pn">1</span><h4>You're already in.</h4></div>
@@ -664,20 +661,20 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
               </article>
               <article class="g-page" id="gp-2">
                 <div class="top"><span class="pn">2</span><h4>Try it before you pick.</h4></div>
-                <p>Three ways in that don't need a program:</p>
+                <p>Four ways in that don't need a program:</p>
                 <ul class="check">
                   <li><b>A JFK Jr. Forum event.</b> RSVP and go.</li>
                   <li><b>A Fellows' study group.</b> Weekly sessions with this semester's Resident Fellows and their guests.</li>
+                  <li><b>Attend a Food for Thought event.</b></li>
                   <li><b>Fellows' office hours.</b> Any Harvard student can book one-on-one time.</li>
                 </ul>
-                <p class="g-tip">Bring one question written down. Office hours go by fast, and Fellows remember the students who come prepared.</p>
+                <p class="g-tip">Bring a question written down in your notebook. Office hours go by fast, and Fellows remember the students who come prepared.</p>
               </article>
               <article class="g-page" id="gp-3">
                 <div class="top"><span class="pn">3</span><h4>Pick a program. Or two.</h4></div>
                 <p>There are <b>17 programs</b>, from teaching civics in Boston classrooms to writing the Harvard Youth Poll. You don't have to choose just one: in 13 of the 17, at least half the members are in another program too.</p>
                 <p><a class="in" href="#find">Not sure where you fit? Take the quiz ▸</a></p>
                 <p class="g-tip">Pair a program that takes applications with one that doesn't, so you have a home while you wait to hear back.</p>
-                <span class="g-cite">Source: 2026 IOP voter roll</span>
               </article>
               <article class="g-page" id="gp-4">
                 <div class="top"><span class="pn">4</span><h4>Coalitions are the low-key option.</h4></div>
@@ -710,18 +707,16 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
           </div>
 
           <div class="g-track" id="g-new" role="tabpanel" aria-labelledby="g-tab-new" hidden>
-            <div class="g-meta"><span class="for">For new members</span><span>6 pages</span><span>3 min read</span></div>
             <div class="g-pages">
               <article class="g-page" id="gn-1">
-                <div class="top"><span class="pn">1</span><h4>Sign in. Every time.</h4></div>
+                <div class="top"><span class="pn">1</span><h4>Attend meetings!</h4></div>
                 <p>Every program has to take attendance. Make it to <b>half of a program's meetings</b> and you can vote for the Executive Team and for that program's chair.</p>
-                <p class="g-tip">Missed the sign-in sheet? Tell your chair that day, not in November. The Election Commission builds the voter roll from attendance.</p>
+                <p class="g-tip">Missed the sign-in sheet? Tell your chair that day the reason why.</p>
               </article>
               <article class="g-page" id="gn-2">
                 <div class="top"><span class="pn">2</span><h4>That's also how you run.</h4></div>
                 <p>The attendance that lets you vote for chair also makes you eligible to <b>run for chair</b>. Terms are one year, and nobody can serve more than one full term chairing the same program, so every seat opens up.</p>
                 <p class="g-tip">Some programs pick their chairs by application instead of election. Ask yours which one it is early.</p>
-                <p class="g-tip">If you win, ask for the transition memo. Every outgoing chair has to write one, with contacts, plans and finances.</p>
               </article>
               <article class="g-page" id="gn-3">
                 <div class="top"><span class="pn">3</span><h4>You can watch SAC.</h4></div>
@@ -754,7 +749,6 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
             </div>
           </div>
           <div class="g-track" id="g-etq" role="tabpanel" aria-labelledby="g-tab-pro2" hidden>
-            <div class="g-meta"><span class="for">For everyone</span><span>6 pages</span><span>3 min read</span></div>
             <div class="g-pages">
               <article class="g-page" id="ge-1">
                 <div class="top"><span class="pn">1</span><h4>The first email.</h4></div>
@@ -778,13 +772,13 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
                 <p class="g-tip">Close with "Is there anyone else you think I should talk to?" It's the most useful question in the building.</p>
               </article>
               <article class="g-page" id="ge-3">
-                <div class="top"><span class="pn">3</span><h4>Ask a question, not a speech.</h4></div>
+                <div class="top"><span class="pn">3</span><h4>Ask a question, don't give a speech.</h4></div>
                 <p>At the Forum or in a study group, the mic is shared. Say <b>your name, your year, and one question</b>, ideally in under 30 seconds. If you need a paragraph of setup, it's an essay.</p>
                 <p class="g-tip">The best questions are ones the guest hasn't answered a hundred times. Skim their last few interviews before you go.</p>
                 <p class="g-tip">Disagree? Good. Do it respectfully, and let them finish their answer.</p>
               </article>
               <article class="g-page" id="ge-4">
-                <div class="top"><span class="pn">4</span><h4>Off the record means off.</h4></div>
+                <div class="top"><span class="pn">4</span><h4>Off the record means off the record.</h4></div>
                 <p>Small rooms work because guests can speak candidly. Unless you've been told otherwise, <b>ask before you quote, record or post</b> anything from a study group, a dinner or office hours.</p>
                 <p class="g-tip">That includes the group chat. Screenshots travel.</p>
                 <p class="g-tip">Want a photo? Ask at the end, not in the middle.</p>
@@ -795,15 +789,14 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
                 <ul class="check">
                   <li>Get there 10 minutes early</li>
                   <li>Know how to say every guest's name</li>
-                  <li>Dress a step above the room</li>
+                  <li>Dress well</li>
                   <li>Phone away unless you're running the slides</li>
                 </ul>
-                <p class="g-tip">Need something to wear? The One Fund has an attire fund for exactly this.</p>
+                <p class="g-tip">Need something to wear? The One Fund has an attire fund you can tap into for this exact purpose.</p>
               </article>
               <article class="g-page" id="ge-6">
                 <div class="top"><span class="pn">6</span><h4>Say thank you. Then stay in touch.</h4></div>
-                <p>Send a thank-you within <b>24 hours</b>, and name one thing they said that you're going to use. A few months later, send an update on what you did with it. No ask attached.</p>
-                <p class="g-tip">That second email is the one people remember. It's how a conversation turns into a mentor.</p>
+                <p>Send a thank-you within <b>24 hours</b> of every interaction to make people feel appreciated and to strengthen your relationships.</p>
                 <p class="g-tip kyle">A template library in the guide: first emails, thank-yous, and how to ask for a reference.</p>
               </article>
             </div>
